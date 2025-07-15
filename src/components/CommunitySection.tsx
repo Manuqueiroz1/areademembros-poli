@@ -67,7 +67,7 @@ export default function CommunitySection() {
           <div className="relative">
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
               <p className="text-green-100 italic">
-                "Me surpreendi com esta incrível ferramenta. Em termos de conversação, a melhor professora de inglês que já tive!"
+                "Meu processo com a Teacher Poli tem sido bacana e revelador. Esse misto de flexibilidade, tecnologia e acessibilidade está tornando o aprendizado algo fácil na minha rotina, e é muito legal saber que tem uma comunidade tão grande de pessoas aprendendo junto comigo."
               </p>
               <p className="text-green-200 mt-2 font-medium">- Carlos Eloy Ferreira, Membro</p>
             </div>
