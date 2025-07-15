@@ -38,7 +38,6 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
             alt="Teacher Poli" 
             className="h-16 w-auto mx-auto mb-4"
           />
-          <h1 className="text-3xl font-bold text-white mb-2">Área de Membros</h1>
           <h1 className="text-3xl font-bold text-white mb-2">Área de Membros - Teacher Poli</h1>
           <p className="text-purple-100">Acesse com suas credenciais da Teacher Poli</p>
         </div>
