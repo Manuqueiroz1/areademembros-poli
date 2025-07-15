@@ -25,19 +25,19 @@ export default function AIAssistantSection() {
     {
       title: 'Inglês Básico',
       description: 'Plano para iniciantes em inglês',
-      duration: '3 meses',
+      duration: '30 dias',
       icon: BookOpen
     },
     {
       title: 'Inglês Intermediário',
       description: 'Aperfeiçoe suas habilidades',
-      duration: '4 meses',
+      duration: '30 dias',
       icon: Target
     },
     {
       title: 'Inglês Avançado',
       description: 'Fluência e proficiência',
-      duration: '6 meses',
+      duration: '30 dias',
       icon: Sparkles
     }
   ];
