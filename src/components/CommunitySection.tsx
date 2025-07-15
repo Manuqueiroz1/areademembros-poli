@@ -39,9 +39,10 @@ export default function CommunitySection() {
         <p className="text-gray-600">Conecte-se com milhares de estudantes e pratique inglês todos os dias</p>
       </div>
 
-      {/* Hero Section */}
+      {/* Hero Section - CORRIGIDO */}
       <div className="bg-gradient-to-r from-green-500 to-green-600 rounded-2xl p-8 mb-8 text-white">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+          {/* ✅ PRIMEIRA COLUNA - Conteúdo principal */}
           <div>
             <h3 className="text-3xl font-bold mb-4">
               Junte-se à Nossa Comunidade
@@ -55,6 +56,9 @@ export default function CommunitySection() {
                 <div className="text-sm">Membros Ativos</div>
               </div>
             </div>
+          </div> {/* ✅ FECHAMENTO CORRETO DA PRIMEIRA COLUNA */}
+          
+          {/* ✅ SEGUNDA COLUNA - Depoimento */}
           <div className="relative">
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
               <p className="text-green-100 italic">
@@ -62,7 +66,9 @@ export default function CommunitySection() {
               </p>
               <p className="text-green-200 mt-2 font-medium">- Lucimara, Aluna e Participante da Comunidade Teacher Poli</p>
             </div>
-          </div>
+          </div> {/* ✅ FECHAMENTO CORRETO DA SEGUNDA COLUNA */}
+        </div> {/* ✅ FECHAMENTO DO GRID */}
+      </div> {/* ✅ FECHAMENTO DA SEÇÃO HERO */}
 
       {/* Benefits */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
