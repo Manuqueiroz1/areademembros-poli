@@ -19,7 +19,7 @@ const onboardingVideos: Video[] = [
     duration: '2:02',
     completed: true,
     locked: false,
-    embedUrl: 'https://www.youtube.com/watch?v=mttHTuEK5Xs'
+    embedUrl: 'https://www.youtube.com/embed/mttHTuEK5Xs'
   },
   {
     id: '2',
@@ -28,7 +28,7 @@ const onboardingVideos: Video[] = [
     duration: '3:33',
     completed: true,
     locked: false,
-    embedUrl: 'https://www.youtube.com/watch?v=-6J-tNXZkQc'
+    embedUrl: 'https://www.youtube.com/embed/-6J-tNXZkQc'
   },
   {
     id: '3',
@@ -37,7 +37,7 @@ const onboardingVideos: Video[] = [
     duration: '00:57',
     completed: false,
     locked: false,
-    embedUrl: 'https://www.youtube.com/watch?v=povotikiPeg'
+    embedUrl: 'https://www.youtube.com/embed/povotikiPeg'
   },
 ];
 
