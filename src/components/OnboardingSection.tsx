@@ -16,38 +16,29 @@ const onboardingVideos: Video[] = [
     id: '1',
     title: 'Bem-vindo à Teacher Poli',
     description: 'Conheça a plataforma e como ela pode transformar seu aprendizado',
-    duration: '5:30',
+    duration: '2:02',
     completed: true,
     locked: false,
-    embedUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+    embedUrl: 'https://youtu.be/mttHTuEK5Xs'
   },
   {
     id: '2',
-    title: 'Navegando pela Plataforma',
-    description: 'Aprenda a usar todas as funcionalidades disponíveis',
-    duration: '8:15',
+    title: 'Nossa Cultura e Valores',
+    description: 'Conheça tudo aquilo que nos guia',
+    duration: '3:33',
     completed: true,
     locked: false,
-    embedUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+    embedUrl: 'https://youtu.be/-6J-tNXZkQc'
   },
   {
     id: '3',
-    title: 'Criando seu Plano de Estudos',
-    description: 'Como personalizar seu aprendizado com nossa IA',
-    duration: '12:45',
+    title: 'Passo a Passo: Primeiro Acesso',
+    description: 'Como encontrar tudo que precisa para acessar pela primeira vez',
+    duration: '00:57',
     completed: false,
     locked: false,
-    embedUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+    embedUrl: 'https://youtu.be/povotikiPeg'
   },
-  {
-    id: '4',
-    title: 'Recursos Avançados',
-    description: 'Explore funcionalidades premium da plataforma',
-    duration: '15:20',
-    completed: false,
-    locked: true,
-    embedUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
-  }
 ];
 
 export default function OnboardingSection() {
