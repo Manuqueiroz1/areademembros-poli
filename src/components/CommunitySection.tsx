@@ -51,16 +51,9 @@ export default function CommunitySection() {
             </p>
             <div className="flex items-center space-x-6 text-green-100">
               <div className="text-center">
-                <div className="text-2xl font-bold">2.500+</div>
+                <div className="text-2xl font-bold">1.500+</div>
                 <div className="text-sm">Membros Ativos</div>
               </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold">24/7</div>
-                <div className="text-sm">Suporte</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold">100+</div>
-                <div className="text-sm">Mensagens/dia</div>
               </div>
             </div>
           </div>
