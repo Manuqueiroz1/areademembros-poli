@@ -108,12 +108,12 @@ export default function ResourcesSection() {
                 <div className="text-purple-200 text-sm">de atividades</div>
               </div>
               <div>
-                <div className="text-2xl font-bold">5h</div>
+                <div className="text-2xl font-bold">+ de 30h</div>
                 {/* ✅ CORRIGIDO: Tag de fechamento malformada */}
                 <div className="text-purple-200 text-sm">Aulas</div>
               </div>
               <div>
-                <div className="text-2xl font-bold">50+</div>
+                <div className="text-2xl font-bold">300+</div>
                 <div className="text-purple-200 text-sm">Exercícios</div>
               </div>
               <div>
