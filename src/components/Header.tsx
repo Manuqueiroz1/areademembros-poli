@@ -13,7 +13,7 @@ export default function Header({ userName, onLogout }: HeaderProps) {
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
             <img 
-              src="/public/WhatsApp Image 2025-06-02 at 10.53.02.jpeg" 
+              src="/WhatsApp Image 2025-06-02 at 10.53.02.jpeg" 
               alt="Teacher Poli" 
               className="h-10 w-auto"
             />
