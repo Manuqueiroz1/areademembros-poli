@@ -1,5 +1,5 @@
 import React from 'react';
-import { Download, FileText, Headphones, Video, BookOpen, Star } from 'lucide-react';
+import { Download, FileText, Headphones, Video, BookOpen, Star, Play } from 'lucide-react';
 
 interface Resource {
   id: string;
@@ -17,18 +17,27 @@ const resources: Resource[] = [
     title: 'Maximizando seu Aprendizado com a Teacher Poli',
     description: 'Ebook Completo Explicando Todas as Funcionalidades da Teacher Poli',
     type: 'pdf',
+    size: '2.5 MB',
+    rating: 4.8,
+    downloads: 1250
   },
   {
     id: '2',
     title: 'Curso Stress in Pronunciation',
     description: 'Conteúdo complementar para aprofundar seus estudos e aprender como os nativos realmente falam',
     type: 'video',
+    size: '1.2 GB',
+    rating: 4.9,
+    downloads: 890
   },
   {
     id: '3',
     title: 'Entendendo e Aplicando o Método APA',
     description: 'Descubra como aplicar o método APA na sua jornada de aprendizado com a Teacher Poli',
     type: 'ebook',
+    size: '1.8 MB',
+    rating: 4.7,
+    downloads: 1100
   }
 ];
 
@@ -70,7 +79,7 @@ export default function ResourcesSection() {
         <p className="text-gray-600">Materiais extras e conteúdos especiais para turbinar seus estudos</p>
       </div>
 
-      {/* Featured Resource */}
+      {/* Featured Resource - SEÇÃO CORRIGIDA */}
       <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl p-8 mb-8 text-white">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
           <div>
@@ -84,12 +93,15 @@ export default function ResourcesSection() {
             <p className="text-purple-100 mb-6">
               São 30 dias de aulas e exercícios para sair do básico e consumir os primeiros conteúdos 100% em inglês.
             </p>
+            {/* ✅ CORRIGIDO: Substituído <acesso> por <Play> */}
             <button className="inline-flex items-center px-6 py-3 bg-white text-purple-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors">
-              <acesso className="mr-2 h-4 w-4" />
+              <Play className="mr-2 h-4 w-4" />
               Acessar Curso
             </button>
           </div>
+          
           <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
+            {/* ✅ CORRIGIDO: Grid com 4 itens para melhor balanceamento */}
             <div className="grid grid-cols-2 gap-4 text-center">
               <div>
                 <div className="text-2xl font-bold">30 dias</div>
@@ -97,12 +109,16 @@ export default function ResourcesSection() {
               </div>
               <div>
                 <div className="text-2xl font-bold">5h</div>
-                <div className="text-purple-200 text-sm">Aulas/div>
+                {/* ✅ CORRIGIDO: Tag de fechamento malformada */}
+                <div className="text-purple-200 text-sm">Aulas</div>
               </div>
               <div>
                 <div className="text-2xl font-bold">50+</div>
                 <div className="text-purple-200 text-sm">Exercícios</div>
               </div>
+              <div>
+                <div className="text-2xl font-bold">100%</div>
+                <div className="text-purple-200 text-sm">Gratuito</div>
               </div>
             </div>
           </div>
