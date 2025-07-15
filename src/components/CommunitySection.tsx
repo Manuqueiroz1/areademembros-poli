@@ -54,9 +54,7 @@ export default function CommunitySection() {
                 <div className="text-2xl font-bold">1.500+</div>
                 <div className="text-sm">Membros Ativos</div>
               </div>
-              </div>
             </div>
-          </div>
           <div className="relative">
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
               <p className="text-green-100 italic">
@@ -65,8 +63,6 @@ export default function CommunitySection() {
               <p className="text-green-200 mt-2 font-medium">- Lucimara, Aluna e Participante da Comunidade Teacher Poli</p>
             </div>
           </div>
-        </div>
-      </div>
 
       {/* Benefits */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
