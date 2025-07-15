@@ -5,7 +5,7 @@ export default function CommunitySection() {
   const whatsappGroup = {
     name: 'Comunidade Teacher Poli',
     description: 'Comunidade oficial com todos os alunos da Teacher Poli para praticar inglês, tirar dúvidas e compartilhar experiências',
-    members: '2.500+',
+    members: '1.500+',
     link: 'https://chat.whatsapp.com/KJoq3lyYDqjIYOG5vjYo81?mode=r_c'
   };
 
@@ -18,17 +18,17 @@ export default function CommunitySection() {
     {
       icon: Users,
       title: 'Networking',
-      description: 'Conecte-se com pessoas do mundo todo'
+      description: 'Conecte-se com pessoas que compartilham do mesmo objetivo que você'
     },
     {
       icon: Phone,
-      title: 'Suporte Rápido',
-      description: 'Tire dúvidas rapidamente com a comunidade'
+      title: 'Ajuda Rápida',
+      description: 'Tire dúvidas rapidamente com a comunidade, sempre vai ter alguém disposto a ajudar'
     },
     {
       icon: Calendar,
       title: 'Eventos Exclusivos',
-      description: 'Participe de lives e eventos especiais'
+      description: 'Participe de lives e eventos especiais todas as semanas'
     }
   ];
 
@@ -47,7 +47,7 @@ export default function CommunitySection() {
               Junte-se à Nossa Comunidade
             </h3>
             <p className="text-green-100 mb-6 text-lg">
-              Mais de 2.500 alunos ativos praticando inglês, compartilhando experiências e se ajudando mutuamente.
+              Mais de 1.500 alunos ativos praticando inglês, compartilhando experiências e se ajudando mutuamente.
             </p>
             <div className="flex items-center space-x-6 text-green-100">
               <div className="text-center">
@@ -67,9 +67,9 @@ export default function CommunitySection() {
           <div className="relative">
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
               <p className="text-green-100 italic">
-                "A comunidade da Teacher Poli é incrível! Sempre tem alguém para ajudar e praticar junto."
+                "Me surpreendi com esta incrível ferramenta. Em termos de conversação, a melhor professora de inglês que já tive!"
               </p>
-              <p className="text-green-200 mt-2 font-medium">- Carlos Santos, Membro</p>
+              <p className="text-green-200 mt-2 font-medium">- Carlos Eloy Ferreira, Membro</p>
             </div>
           </div>
         </div>
@@ -163,7 +163,6 @@ export default function CommunitySection() {
               <li>• Conteúdo ofensivo ou inadequado</li>
               <li>• Discussões políticas ou religiosas</li>
               <li>• Compartilhar conteúdo protegido por direitos autorais</li>
-              <li>• Mensagens em outros idiomas (exceto inglês)</li>
             </ul>
           </div>
         </div>
