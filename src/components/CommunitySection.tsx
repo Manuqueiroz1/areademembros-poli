@@ -69,7 +69,7 @@ export default function CommunitySection() {
               <p className="text-green-100 italic">
                 "Meu processo com a Teacher Poli tem sido bacana e revelador. Esse misto de flexibilidade, tecnologia e acessibilidade está tornando o aprendizado algo fácil na minha rotina, e é muito legal saber que tem uma comunidade tão grande de pessoas aprendendo junto comigo."
               </p>
-              <p className="text-green-200 mt-2 font-medium">- Carlos Eloy Ferreira, Membro</p>
+              <p className="text-green-200 mt-2 font-medium">- Lucimara, Aluna e Participante da Comunidade Teacher Poli</p>
             </div>
           </div>
         </div>
