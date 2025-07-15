@@ -34,7 +34,7 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
         {/* Logo */}
         <div className="text-center mb-8">
           <img 
-            src="/public/WhatsApp Image 2025-06-02 at 10.53.02.jpeg" 
+            src="/WhatsApp Image 2025-06-02 at 10.53.02.jpeg" 
             alt="Teacher Poli" 
             className="h-16 w-auto mx-auto mb-4"
           />
