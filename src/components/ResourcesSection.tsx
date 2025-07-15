@@ -14,39 +14,21 @@ interface Resource {
 const resources: Resource[] = [
   {
     id: '1',
-    title: 'Guia Completo de Gramática Inglesa',
-    description: 'Material completo com todas as regras gramaticais essenciais',
+    title: 'Maximizando seu Aprendizado com a Teacher Poli',
+    description: 'Ebook Completo Explicando Todas as Funcionalidades da Teacher Poli',
     type: 'pdf',
-    size: '2.5 MB',
-    rating: 4.8,
-    downloads: 1250
   },
   {
     id: '2',
-    title: 'Áudios para Pronúncia',
-    description: 'Exercícios de pronúncia com nativos americanos e britânicos',
-    type: 'audio',
-    size: '45 MB',
-    rating: 4.9,
-    downloads: 890
+    title: 'Curso Stress in Pronunciation',
+    description: 'Conteúdo complementar para aprofundar seus estudos e aprender como os nativos realmente falam',
+    type: 'video',
   },
   {
     id: '3',
-    title: 'Videoaulas Extras',
-    description: 'Conteúdo complementar para aprofundar seus estudos',
-    type: 'video',
-    size: '120 MB',
-    rating: 4.7,
-    downloads: 2100
-  },
-  {
-    id: '4',
-    title: 'E-book: Inglês para Negócios',
-    description: 'Vocabulário e expressões essenciais para o ambiente corporativo',
+    title: 'Entendendo e Aplicando o Método APA',
+    description: 'Descubra como aplicar o método APA na sua jornada de aprendizado com a Teacher Poli',
     type: 'ebook',
-    size: '1.8 MB',
-    rating: 4.6,
-    downloads: 750
   }
 ];
 
@@ -97,33 +79,30 @@ export default function ResourcesSection() {
               Bônus em Destaque
             </div>
             <h3 className="text-2xl font-bold mb-4">
-              Kit Completo de Conversação
+              Intensivo 30D | English Unlocked
             </h3>
             <p className="text-purple-100 mb-6">
-              Mais de 100 diálogos práticos para situações do dia a dia, com áudio nativo e exercícios interativos.
+              São 30 dias de aulas e exercícios para sair do básico e consumir os primeiros conteúdos 100% em inglês.
             </p>
             <button className="inline-flex items-center px-6 py-3 bg-white text-purple-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors">
-              <Download className="mr-2 h-4 w-4" />
-              Download Gratuito
+              <acesso className="mr-2 h-4 w-4" />
+              Acessar Curso
             </button>
           </div>
           <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
             <div className="grid grid-cols-2 gap-4 text-center">
               <div>
-                <div className="text-2xl font-bold">100+</div>
-                <div className="text-purple-200 text-sm">Diálogos</div>
+                <div className="text-2xl font-bold">30 dias</div>
+                <div className="text-purple-200 text-sm">de atividades</div>
               </div>
               <div>
                 <div className="text-2xl font-bold">5h</div>
-                <div className="text-purple-200 text-sm">de Áudio</div>
+                <div className="text-purple-200 text-sm">Aulas/div>
               </div>
               <div>
                 <div className="text-2xl font-bold">50+</div>
                 <div className="text-purple-200 text-sm">Exercícios</div>
               </div>
-              <div>
-                <div className="text-2xl font-bold">4.9</div>
-                <div className="text-purple-200 text-sm">Avaliação</div>
               </div>
             </div>
           </div>
