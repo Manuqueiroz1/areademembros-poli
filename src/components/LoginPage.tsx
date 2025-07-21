@@ -162,39 +162,3 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
     </div>
   );
 }
-            <a
-              href="#"
-              className="text-purple-600 hover:text-purple-700 text-xs sm:text-sm font-medium"
-              onClick={(e) => {
-                e.preventDefault();
-                alert('Para recuperar sua senha, entre em contato conosco em suporte@teacherpoli.com');
-              }}
-            >
-              {t('login.verifyPurchaseEmail')}
-            </a>
-            <div className="text-gray-500 text-xs sm:text-sm">
-              Primeira vez aqui?{' '}
-              <a
-                href="#"
-                className="text-purple-600 hover:text-purple-700 font-medium"
-                onClick={(e) => {
-                  e.preventDefault();
-                  window.location.reload();
-                }}
-              >
-                Verificar e-mail da compra
-              </a>
-            </div>
-          </div>
-        </div>
-
-        {/* Footer */}
-        <div className="text-center mt-6 sm:mt-8">
-          <p className="text-purple-100 text-xs sm:text-sm">
-            © 2025 Teacher Poli. Todos os direitos reservados.
-          </p>
-        </div>
-      </div>
-    </div>
-  );
-}
