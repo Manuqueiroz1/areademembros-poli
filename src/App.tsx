@@ -24,6 +24,12 @@ function App() {
   const [verifiedEmail, setVerifiedEmail] = useState<string | null>(null);
   const [needsPasswordCreation, setNeedsPasswordCreation] = useState(false);
   const [registeredUsers, setRegisteredUsers] = useLocalStorage<{[email: string]: {password: string, name: string}}>('teacherpoli_users', {});
+  const [hasExistingUsers, setHasExistingUsers] = useState(false);
+
+  // Check if there are existing users on app load
+  React.useEffect(() => {
+    setHasExistingUsers(Object.keys(registeredUsers).length > 0);
+  }, [registeredUsers]);
 
   const handleEmailVerification = (email: string) => {
     setVerifiedEmail(email);
@@ -56,7 +62,7 @@ function App() {
       email: email,
       isVerified: true,
       hasPassword: true,
-      hasGeneratedPlan: false,
+      hasGeneratedPlan: false, // New user starts with no plan
       firstAccess: true
     });
     setIsLoggedIn(true);
@@ -68,14 +74,18 @@ function App() {
     const userRecord = registeredUsers[credentials.email];
     
     if (userRecord && userRecord.password === credentials.password) {
+      // Check if user has generated a plan before (stored in localStorage)
+      const userPlanStatus = localStorage.getItem(`teacherpoli_plan_${credentials.email}`);
+      const hasGeneratedPlan = userPlanStatus === 'true';
+      
       // Successful login
       setUser({
         name: userRecord.name,
         email: credentials.email,
         isVerified: true,
         hasPassword: true,
-        hasGeneratedPlan: false, // Reset to false so they can generate new plans
-        firstAccess: false
+        hasGeneratedPlan: hasGeneratedPlan, // Restore previous plan status
+        firstAccess: false // Not first access anymore
       });
       setIsLoggedIn(true);
     } else {
@@ -94,6 +104,9 @@ function App() {
 
   const handlePlanGenerated = () => {
     if (user) {
+      // Save plan generation status to localStorage
+      localStorage.setItem(`teacherpoli_plan_${user.email}`, 'true');
+      
       setUser({
         ...user,
         hasGeneratedPlan: true
@@ -101,7 +114,7 @@ function App() {
     }
   };
 
-  // Show password creation page if email is verified but password not created
+  // Show password creation page if email is verified but password not created  
   if (verifiedEmail && needsPasswordCreation) {
     return (
       <PasswordCreationPage 
@@ -111,8 +124,8 @@ function App() {
     );
   }
 
-  // Show email verification for first-time users or if verified email needs login
-  if (!isLoggedIn && !user && !verifiedEmail) {
+  // Show email verification ONLY if no users exist (first time ever)
+  if (!isLoggedIn && !user && !verifiedEmail && !hasExistingUsers) {
     return <EmailVerificationPage onVerificationSuccess={handleEmailVerification} />;
   }
 
@@ -123,7 +136,7 @@ function App() {
 
   // Check if modules should be locked
   const isModuleLocked = (tabId: string) => {
-    if (!user.hasGeneratedPlan && user.firstAccess) {
+    if (!user.hasGeneratedPlan) {
       return !['onboarding', 'ai-assistant'].includes(tabId);
     }
     return false;
