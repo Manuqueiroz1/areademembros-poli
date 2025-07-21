@@ -39,9 +39,9 @@ export default function TeacherPoliSection() {
           <div className="relative">
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 sm:p-6">
               <p className="text-purple-100 italic text-sm sm:text-base">
-                "Me surpreendi com esta incrível ferramenta. Em termos de conversação, a melhor professora de inglês que já tive!"
+                "{t('teacherpoli.testimonial')}"
               </p>
-              <p className="text-purple-200 mt-2 font-medium text-xs sm:text-sm">- Carlos Eloy, Aluno da Teacher Polie</p>
+              <p className="text-purple-200 mt-2 font-medium text-xs sm:text-sm">{t('teacherpoli.testimonialAuthor')}</p>
             </div>
           </div>
         </div>

@@ -52,7 +52,7 @@ export default function CommunitySection() {
             <div className="flex items-center space-x-6 text-green-100">
               <div className="text-center">
                 <div className="text-xl sm:text-2xl font-bold">1.500+</div>
-                <div className="text-xs sm:text-sm">{t('community.activeMembers')}</div>
+                <div className="text-xs sm:text-sm">{t('community.membersCount')}</div>
               </div>
             </div>
           </div> {/* ✅ FECHAMENTO CORRETO DA PRIMEIRA COLUNA */}
@@ -61,9 +61,9 @@ export default function CommunitySection() {
           <div className="relative">
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 sm:p-6">
               <p className="text-green-100 italic text-sm sm:text-base">
-                "Meu processo com a Teacher Poli tem sido bacana e revelador. Esse misto de flexibilidade, tecnologia e acessibilidade está tornando o aprendizado algo fácil na minha rotina, e é muito legal saber que tem uma comunidade tão grande de pessoas aprendendo junto comigo."
+                "{t('community.testimonial')}"
               </p>
-              <p className="text-green-200 mt-2 font-medium text-xs sm:text-sm">- Lucimara, Aluna e Participante da Comunidade Teacher Poli</p>
+              <p className="text-green-200 mt-2 font-medium text-xs sm:text-sm">{t('community.testimonialAuthor')}</p>
             </div>
           </div> {/* ✅ FECHAMENTO CORRETO DA SEGUNDA COLUNA */}
         </div> {/* ✅ FECHAMENTO DO GRID */}
@@ -143,21 +143,18 @@ export default function CommunitySection() {
           <div>
             <h4 className="text-sm sm:text-base font-semibold text-gray-900 mb-3">{t('community.allowed')}</h4>
             <ul className="space-y-2 text-gray-600 text-xs sm:text-sm">
-              <li>• Praticar inglês com outros membros</li>
-              <li>• Compartilhar dúvidas sobre os cursos</li>
-              <li>• Ajudar outros alunos</li>
-              <li>• Compartilhar conquistas e progressos</li>
-              <li>• Participar de atividades em grupo</li>
+              {t('community.allowedItems').map((item: string, index: number) => (
+                <li key={index}>• {item}</li>
+              ))}
             </ul>
           </div>
           
           <div>
             <h4 className="text-sm sm:text-base font-semibold text-gray-900 mb-3">{t('community.notAllowed')}</h4>
             <ul className="space-y-2 text-gray-600 text-xs sm:text-sm">
-              <li>• Spam ou mensagens promocionais</li>
-              <li>• Conteúdo ofensivo ou inadequado</li>
-              <li>• Discussões políticas ou religiosas</li>
-              <li>• Compartilhar conteúdo protegido por direitos autorais</li>
+              {t('community.notAllowedItems').map((item: string, index: number) => (
+                <li key={index}>• {item}</li>
+              ))}
             </ul>
           </div>
         </div>

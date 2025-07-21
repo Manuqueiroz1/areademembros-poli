@@ -705,6 +705,391 @@ const translations: Translations = {
     en: 'Verify purchase email'
   },
   
+  // Community Section - Additional translations
+  'community.groupName': {
+    pt: 'Comunidade Teacher Poli',
+    es: 'Comunidad Teacher Poli',
+    en: 'Teacher Poli Community'
+  },
+  'community.groupDescription': {
+    pt: 'Comunidade oficial com todos os alunos da Teacher Poli para praticar inglês, tirar dúvidas e compartilhar experiências',
+    es: 'Comunidad oficial con todos los estudiantes de Teacher Poli para practicar inglés, resolver dudas y compartir experiencias',
+    en: 'Official community with all Teacher Poli students to practice English, ask questions and share experiences'
+  },
+  'community.dailyPractice': {
+    pt: 'Prática Diária',
+    es: 'Práctica Diaria',
+    en: 'Daily Practice'
+  },
+  'community.dailyPracticeDesc': {
+    pt: 'Pratique inglês todos os dias com outros alunos',
+    es: 'Practique inglés todos los días con otros estudiantes',
+    en: 'Practice English every day with other students'
+  },
+  'community.networking': {
+    pt: 'Networking',
+    es: 'Networking',
+    en: 'Networking'
+  },
+  'community.networkingDesc': {
+    pt: 'Conecte-se com pessoas que compartilham do mesmo objetivo que você',
+    es: 'Conéctese con personas que comparten el mismo objetivo que usted',
+    en: 'Connect with people who share the same goal as you'
+  },
+  'community.quickHelp': {
+    pt: 'Ajuda Rápida',
+    es: 'Ayuda Rápida',
+    en: 'Quick Help'
+  },
+  'community.quickHelpDesc': {
+    pt: 'Tire dúvidas rapidamente com a comunidade, sempre vai ter alguém disposto a ajudar',
+    es: 'Resuelva dudas rápidamente con la comunidad, siempre habrá alguien dispuesto a ayudar',
+    en: 'Get quick help from the community, there will always be someone willing to help'
+  },
+  'community.exclusiveEvents': {
+    pt: 'Eventos Exclusivos',
+    es: 'Eventos Exclusivos',
+    en: 'Exclusive Events'
+  },
+  'community.exclusiveEventsDesc': {
+    pt: 'Participe de lives e eventos especiais todas as semanas',
+    es: 'Participe en transmisiones en vivo y eventos especiales todas las semanas',
+    en: 'Participate in live streams and special events every week'
+  },
+  'community.testimonial': {
+    pt: 'Meu processo com a Teacher Poli tem sido bacana e revelador. Esse misto de flexibilidade, tecnologia e acessibilidade está tornando o aprendizado algo fácil na minha rotina, e é muito legal saber que tem uma comunidade tão grande de pessoas aprendendo junto comigo.',
+    es: 'Mi proceso con Teacher Poli ha sido genial y revelador. Esta mezcla de flexibilidad, tecnología y accesibilidad está haciendo que el aprendizaje sea algo fácil en mi rutina, y es muy genial saber que hay una comunidad tan grande de personas aprendiendo conmigo.',
+    en: 'My process with Teacher Poli has been great and revealing. This mix of flexibility, technology and accessibility is making learning something easy in my routine, and it\'s really cool to know that there\'s such a large community of people learning with me.'
+  },
+  'community.testimonialAuthor': {
+    pt: '- Lucimara, Aluna e Participante da Comunidade Teacher Poli',
+    es: '- Lucimara, Estudiante y Participante de la Comunidad Teacher Poli',
+    en: '- Lucimara, Student and Teacher Poli Community Participant'
+  },
+  'community.allowedItems': {
+    pt: [
+      'Praticar inglês com outros membros',
+      'Compartilhar dúvidas sobre os cursos',
+      'Ajudar outros alunos',
+      'Compartilhar conquistas e progressos',
+      'Participar de atividades em grupo'
+    ],
+    es: [
+      'Practicar inglés con otros miembros',
+      'Compartir dudas sobre los cursos',
+      'Ayudar a otros estudiantes',
+      'Compartir logros y progresos',
+      'Participar en actividades grupales'
+    ],
+    en: [
+      'Practice English with other members',
+      'Share questions about courses',
+      'Help other students',
+      'Share achievements and progress',
+      'Participate in group activities'
+    ]
+  },
+  'community.notAllowedItems': {
+    pt: [
+      'Spam ou mensagens promocionais',
+      'Conteúdo ofensivo ou inadequado',
+      'Discussões políticas ou religiosas',
+      'Compartilhar conteúdo protegido por direitos autorais'
+    ],
+    es: [
+      'Spam o mensajes promocionales',
+      'Contenido ofensivo o inapropiado',
+      'Discusiones políticas o religiosas',
+      'Compartir contenido protegido por derechos de autor'
+    ],
+    en: [
+      'Spam or promotional messages',
+      'Offensive or inappropriate content',
+      'Political or religious discussions',
+      'Share copyrighted content'
+    ]
+  },
+
+  // Resources Section - Complete translations
+  'resources.featuredBonus': {
+    pt: 'Bônus em Destaque',
+    es: 'Bono Destacado',
+    en: 'Featured Bonus'
+  },
+  'resources.intensiveCourse': {
+    pt: 'Intensivo 30D | English Unlocked',
+    es: 'Intensivo 30D | English Unlocked',
+    en: 'Intensive 30D | English Unlocked'
+  },
+  'resources.intensiveDescription': {
+    pt: 'São 30 dias de aulas e exercícios para sair do básico e consumir os primeiros conteúdos 100% em inglês.',
+    es: 'Son 30 días de clases y ejercicios para salir de lo básico y consumir los primeros contenidos 100% en inglés.',
+    en: 'It\'s 30 days of classes and exercises to get out of the basics and consume the first 100% English content.'
+  },
+  'resources.accessCourse': {
+    pt: 'Acessar Curso',
+    es: 'Acceder al Curso',
+    en: 'Access Course'
+  },
+  'resources.daysOfActivities': {
+    pt: 'de atividades',
+    es: 'de actividades',
+    en: 'of activities'
+  },
+  'resources.classes': {
+    pt: 'Aulas',
+    es: 'Clases',
+    en: 'Classes'
+  },
+  'resources.exercises': {
+    pt: 'Exercícios',
+    es: 'Ejercicios',
+    en: 'Exercises'
+  },
+  'resources.free': {
+    pt: 'Gratuito',
+    es: 'Gratuito',
+    en: 'Free'
+  },
+  'resources.studyTips': {
+    pt: 'Dicas de Estudo',
+    es: 'Consejos de Estudio',
+    en: 'Study Tips'
+  },
+  'resources.studyDaily': {
+    pt: 'Estude Diariamente',
+    es: 'Estudie Diariamente',
+    en: 'Study Daily'
+  },
+  'resources.studyDailyDesc': {
+    pt: 'Dedique pelo menos 30 minutos por dia aos estudos para melhores resultados.',
+    es: 'Dedique al menos 30 minutos al día a los estudios para obtener mejores resultados.',
+    en: 'Dedicate at least 30 minutes a day to studying for better results.'
+  },
+  'resources.practiceListening': {
+    pt: 'Pratique a Escuta',
+    es: 'Practique la Escucha',
+    en: 'Practice Listening'
+  },
+  'resources.practiceListeningDesc': {
+    pt: 'Use os áudios disponíveis para treinar sua compreensão auditiva.',
+    es: 'Use los audios disponibles para entrenar su comprensión auditiva.',
+    en: 'Use the available audios to train your listening comprehension.'
+  },
+  'resources.practiceConversation': {
+    pt: 'Pratique Conversação',
+    es: 'Practique Conversación',
+    en: 'Practice Conversation'
+  },
+  'resources.practiceConversationDesc': {
+    pt: 'Participe da comunidade e pratique com outros estudantes.',
+    es: 'Participe en la comunidad y practique con otros estudiantes.',
+    en: 'Join the community and practice with other students.'
+  },
+  'resources.pdfPreview': {
+    pt: 'Visualização de PDF em desenvolvimento',
+    es: 'Vista previa de PDF en desarrollo',
+    en: 'PDF preview in development'
+  },
+  'resources.quizResult': {
+    pt: 'Parabéns! Você acertou todas!',
+    es: '¡Felicidades! ¡Acertaste todas!',
+    en: 'Congratulations! You got them all right!'
+  },
+  'resources.quizGood': {
+    pt: 'Bom trabalho! Continue estudando.',
+    es: '¡Buen trabajo! Sigue estudiando.',
+    en: 'Good job! Keep studying.'
+  },
+  'resources.quizKeepPracticing': {
+    pt: 'Continue praticando para melhorar.',
+    es: 'Sigue practicando para mejorar.',
+    en: 'Keep practicing to improve.'
+  },
+
+  // Settings Section - Complete translations
+  'settings.account': {
+    pt: 'Conta',
+    es: 'Cuenta',
+    en: 'Account'
+  },
+  'settings.accountSubtitle': {
+    pt: 'Gerencie suas informações pessoais',
+    es: 'Gestione su información personal',
+    en: 'Manage your personal information'
+  },
+  'settings.changePassword': {
+    pt: 'Alterar senha',
+    es: 'Cambiar contraseña',
+    en: 'Change password'
+  },
+  'settings.personalData': {
+    pt: 'Dados pessoais',
+    es: 'Datos personales',
+    en: 'Personal data'
+  },
+  'settings.purchaseHistory': {
+    pt: 'Histórico de compras',
+    es: 'Historial de compras',
+    en: 'Purchase history'
+  },
+  'settings.notificationsTitle': {
+    pt: 'Notificações',
+    es: 'Notificaciones',
+    en: 'Notifications'
+  },
+  'settings.notificationsSubtitle': {
+    pt: 'Configure suas preferências de notificação',
+    es: 'Configure sus preferencias de notificación',
+    en: 'Configure your notification preferences'
+  },
+  'settings.emailReminder': {
+    pt: 'E-mail de lembrete',
+    es: 'Recordatorio por correo',
+    en: 'Email reminder'
+  },
+  'settings.emailReminderDesc': {
+    pt: 'Receba lembretes para estudar',
+    es: 'Reciba recordatorios para estudiar',
+    en: 'Receive study reminders'
+  },
+  'settings.newContent': {
+    pt: 'Novos conteúdos',
+    es: 'Nuevo contenido',
+    en: 'New content'
+  },
+  'settings.newContentDesc': {
+    pt: 'Seja notificado sobre novos materiais',
+    es: 'Sea notificado sobre nuevos materiales',
+    en: 'Be notified about new materials'
+  },
+  'settings.communityNotifications': {
+    pt: 'Comunidade',
+    es: 'Comunidad',
+    en: 'Community'
+  },
+  'settings.communityNotificationsDesc': {
+    pt: 'Atividades da comunidade WhatsApp',
+    es: 'Actividades de la comunidad WhatsApp',
+    en: 'WhatsApp community activities'
+  },
+  'settings.privacyTitle': {
+    pt: 'Privacidade e Segurança',
+    es: 'Privacidad y Seguridad',
+    en: 'Privacy & Security'
+  },
+  'settings.privacySubtitle': {
+    pt: 'Gerencie suas configurações de privacidade',
+    es: 'Gestione su configuración de privacidad',
+    en: 'Manage your privacy settings'
+  },
+  'settings.privacyPolicy': {
+    pt: 'Política de Privacidade',
+    es: 'Política de Privacidad',
+    en: 'Privacy Policy'
+  },
+  'settings.termsOfUse': {
+    pt: 'Termos de Uso',
+    es: 'Términos de Uso',
+    en: 'Terms of Use'
+  },
+  'settings.exportData': {
+    pt: 'Exportar dados',
+    es: 'Exportar datos',
+    en: 'Export data'
+  },
+  'settings.deleteAccount': {
+    pt: 'Excluir conta',
+    es: 'Eliminar cuenta',
+    en: 'Delete account'
+  },
+
+  // Teacher Poli Section - Complete translations
+  'teacherpoli.testimonial': {
+    pt: 'Me surpreendi com esta incrível ferramenta. Em termos de conversação, a melhor professora de inglês que já tive!',
+    es: 'Me sorprendí con esta increíble herramienta. ¡En términos de conversación, la mejor profesora de inglés que he tenido!',
+    en: 'I was amazed by this incredible tool. In terms of conversation, the best English teacher I\'ve ever had!'
+  },
+  'teacherpoli.testimonialAuthor': {
+    pt: '- Carlos Eloy, Aluno da Teacher Poli',
+    es: '- Carlos Eloy, Estudiante de Teacher Poli',
+    en: '- Carlos Eloy, Teacher Poli Student'
+  },
+
+  // AI Assistant Section - Complete translations
+  'ai.planGenerated': {
+    pt: 'Baseado no que você me contou, criei um plano de estudos personalizado de 30 dias. O plano considera seu nível atual, objetivos e tempo disponível. Você pode baixar o PDF completo com todas as atividades diárias.',
+    es: 'Basado en lo que me contaste, creé un plan de estudios personalizado de 30 días. El plan considera tu nivel actual, objetivos y tiempo disponible. Puedes descargar el PDF completo con todas las actividades diarias.',
+    en: 'Based on what you told me, I created a personalized 30-day study plan. The plan considers your current level, goals and available time. You can download the complete PDF with all daily activities.'
+  },
+  'ai.planTitle': {
+    pt: 'Plano de Estudos Personalizado - 30 Dias',
+    es: 'Plan de Estudios Personalizado - 30 Días',
+    en: 'Personalized Study Plan - 30 Days'
+  },
+  'ai.level': {
+    pt: 'Nível',
+    es: 'Nivel',
+    en: 'Level'
+  },
+  'ai.objective': {
+    pt: 'Objetivo',
+    es: 'Objetivo',
+    en: 'Objective'
+  },
+  'ai.dailyTime': {
+    pt: 'Tempo diário',
+    es: 'Tiempo diario',
+    en: 'Daily time'
+  },
+  'ai.intermediate': {
+    pt: 'Intermediário',
+    es: 'Intermedio',
+    en: 'Intermediate'
+  },
+  'ai.fluentConversation': {
+    pt: 'Conversação Fluente',
+    es: 'Conversación Fluida',
+    en: 'Fluent Conversation'
+  },
+  'ai.minutes': {
+    pt: 'minutos',
+    es: 'minutos',
+    en: 'minutes'
+  },
+
+  // Onboarding Section - Complete translations
+  'onboarding.welcomeTitle': {
+    pt: 'Bem-vindo à Teacher Poli',
+    es: 'Bienvenido a Teacher Poli',
+    en: 'Welcome to Teacher Poli'
+  },
+  'onboarding.welcomeDesc': {
+    pt: 'Conheça a plataforma e como ela pode transformar seu aprendizado',
+    es: 'Conoce la plataforma y cómo puede transformar tu aprendizaje',
+    en: 'Get to know the platform and how it can transform your learning'
+  },
+  'onboarding.cultureTitle': {
+    pt: 'Nossa Cultura e Valores',
+    es: 'Nuestra Cultura y Valores',
+    en: 'Our Culture and Values'
+  },
+  'onboarding.cultureDesc': {
+    pt: 'Conheça tudo aquilo que nos guia',
+    es: 'Conoce todo lo que nos guía',
+    en: 'Learn about everything that guides us'
+  },
+  'onboarding.stepByStepTitle': {
+    pt: 'Passo a Passo: Primeiro Acesso',
+    es: 'Paso a Paso: Primer Acceso',
+    en: 'Step by Step: First Access'
+  },
+  'onboarding.stepByStepDesc': {
+    pt: 'Como encontrar tudo que precisa para acessar pela primeira vez',
+    es: 'Cómo encontrar todo lo que necesitas para acceder por primera vez',
+    en: 'How to find everything you need to access for the first time'
+  },
+
   // Common
   'common.loading': {
     pt: 'Carregando...',
@@ -720,6 +1105,11 @@ const translations: Translations = {
     pt: 'Cancelar',
     es: 'Cancelar',
     en: 'Cancel'
+  },
+  'common.copyright': {
+    pt: '© 2025 Teacher Poli. Todos os direitos reservados.',
+    es: '© 2025 Teacher Poli. Todos los derechos reservados.',
+    en: '© 2025 Teacher Poli. All rights reserved.'
   }
 };
 

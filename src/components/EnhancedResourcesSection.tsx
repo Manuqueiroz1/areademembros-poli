@@ -203,7 +203,7 @@ export default function EnhancedResourcesSection() {
           <div className="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto">
             <div className="p-6">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-xl font-bold text-gray-900">{selectedResource.title}</h3>
+                <p className="text-gray-600 mb-4">{t('resources.pdfPreview')}</p>
                 <button
                   onClick={() => setShowModal(false)}
                   className="text-gray-400 hover:text-gray-600"
@@ -304,10 +304,10 @@ export default function EnhancedResourcesSection() {
                       </h4>
                       <p className="text-gray-600">
                         {quizScore === selectedResource.questions.length
-                          ? '🎉 Parabéns! Você acertou todas!'
+                          ? `🎉 ${t('resources.quizResult')}`
                           : quizScore >= selectedResource.questions.length / 2
-                          ? '👍 Bom trabalho! Continue estudando.'
-                          : '📚 Continue praticando para melhorar.'}
+                          ? `👍 ${t('resources.quizGood')}`
+                          : `📚 ${t('resources.quizKeepPracticing')}`}
                       </p>
                     </div>
                   )}

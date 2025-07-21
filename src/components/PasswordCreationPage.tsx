@@ -257,7 +257,7 @@ export default function PasswordCreationPage({ email, onPasswordCreated }: Passw
         {/* Footer */}
         <div className="text-center mt-6 sm:mt-8">
           <p className="text-purple-100 text-xs sm:text-sm">
-            © 2025 Teacher Poli. Todos os direitos reservados.
+            {t('common.copyright')}
           </p>
         </div>
       </div>

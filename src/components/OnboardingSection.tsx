@@ -15,8 +15,8 @@ interface Video {
 const onboardingVideos: Video[] = [
   {
     id: '1',
-    title: 'Bem-vindo à Teacher Poli',
-    description: 'Conheça a plataforma e como ela pode transformar seu aprendizado',
+    title: 'onboarding.welcomeTitle',
+    description: 'onboarding.welcomeDesc',
     duration: '2:02',
     completed: true,
     locked: false,
@@ -24,8 +24,8 @@ const onboardingVideos: Video[] = [
   },
   {
     id: '2',
-    title: 'Nossa Cultura e Valores',
-    description: 'Conheça tudo aquilo que nos guia',
+    title: 'onboarding.cultureTitle',
+    description: 'onboarding.cultureDesc',
     duration: '3:33',
     completed: true,
     locked: false,
@@ -33,8 +33,8 @@ const onboardingVideos: Video[] = [
   },
   {
     id: '3',
-    title: 'Passo a Passo: Primeiro Acesso',
-    description: 'Como encontrar tudo que precisa para acessar pela primeira vez',
+    title: 'onboarding.stepByStepTitle',
+    description: 'onboarding.stepByStepDesc',
     duration: '00:57',
     completed: false,
     locked: false,
@@ -98,13 +98,13 @@ export default function OnboardingSection() {
                     </div>
                     <div className="flex-1 min-w-0">
                       <h4 className="text-xs sm:text-sm font-medium text-gray-900 truncate">
-                        {video.title}
+                        {t(video.title)}
                       </h4>
                       <p className="text-xs sm:text-sm text-gray-500 mt-1 line-clamp-2">
-                        {video.description}
+                          {t(selectedVideo.title)}
                       </p>
                       <div className="flex items-center mt-2 text-xs text-gray-400">
-                        <Clock className="h-3 w-3 mr-1" />
+                          {t(selectedVideo.description)}
                         {video.duration}
                       </div>
                     </div>

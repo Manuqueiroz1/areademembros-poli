@@ -67,17 +67,17 @@ export default function AIAssistantSection({ onPlanGenerated }: AIAssistantSecti
       const aiResponse: Message = {
         id: (Date.now() + 1).toString(),
         type: 'assistant',
-        content: 'Baseado no que você me contou, criei um plano de estudos personalizado de 30 dias. O plano considera seu nível atual, objetivos e tempo disponível. Você pode baixar o PDF completo com todas as atividades diárias.',
+        content: t('ai.planGenerated'),
         timestamp: new Date()
       };
       setMessages(prev => [...prev, aiResponse]);
       
       // Simulate plan generation
       setGeneratedPlan({
-        title: 'Plano de Estudos Personalizado - 30 Dias',
-        level: 'Intermediário',
-        objective: 'Conversação Fluente',
-        dailyTime: '45 minutos',
+        title: t('ai.planTitle'),
+        level: t('ai.intermediate'),
+        objective: t('ai.fluentConversation'),
+        dailyTime: `45 ${t('ai.minutes')}`,
         generatedAt: new Date()
       });
       
@@ -152,9 +152,9 @@ export default function AIAssistantSection({ onPlanGenerated }: AIAssistantSecti
               <div className="bg-purple-50 rounded-lg p-4 mb-4">
                 <h4 className="text-sm sm:text-base font-medium text-purple-900 mb-2">{generatedPlan.title}</h4>
                 <div className="text-sm text-purple-700 space-y-1">
-                  <p>Nível: {generatedPlan.level}</p>
-                  <p>Objetivo: {generatedPlan.objective}</p>
-                  <p>Tempo diário: {generatedPlan.dailyTime}</p>
+                  <p>{t('ai.level')}: {generatedPlan.level}</p>
+                  <p>{t('ai.objective')}: {generatedPlan.objective}</p>
+                  <p>{t('ai.dailyTime')}: {generatedPlan.dailyTime}</p>
                 </div>
               </div>
               <button

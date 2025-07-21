@@ -136,22 +136,22 @@ export default function SettingsSection() {
               <User className="h-5 w-5 text-green-600" />
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Conta</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-300">Gerencie suas informações pessoais</p>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{t('settings.account')}</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-300">{t('settings.accountSubtitle')}</p>
             </div>
           </div>
 
           <div className="space-y-4">
             <button className="w-full flex items-center justify-between p-3 rounded-lg border border-gray-200 dark:border-gray-600 hover:border-gray-300 dark:hover:border-gray-500 transition-colors">
-              <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Alterar senha</span>
+              <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{t('settings.changePassword')}</span>
               <span className="text-gray-400 dark:text-gray-500">→</span>
             </button>
             <button className="w-full flex items-center justify-between p-3 rounded-lg border border-gray-200 dark:border-gray-600 hover:border-gray-300 dark:hover:border-gray-500 transition-colors">
-              <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Dados pessoais</span>
+              <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{t('settings.personalData')}</span>
               <span className="text-gray-400 dark:text-gray-500">→</span>
             </button>
             <button className="w-full flex items-center justify-between p-3 rounded-lg border border-gray-200 dark:border-gray-600 hover:border-gray-300 dark:hover:border-gray-500 transition-colors">
-              <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Histórico de compras</span>
+              <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{t('settings.purchaseHistory')}</span>
               <span className="text-gray-400 dark:text-gray-500">→</span>
             </button>
           </div>
@@ -164,16 +164,16 @@ export default function SettingsSection() {
               <Bell className="h-5 w-5 text-yellow-600" />
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Notificações</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-300">Configure suas preferências de notificação</p>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{t('settings.notificationsTitle')}</h3>
+              <p className="text-sm text-gray-600 dark:text-gray-300">{t('settings.notificationsSubtitle')}</p>
             </div>
           </div>
 
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-700 dark:text-gray-300">E-mail de lembrete</p>
-                <p className="text-xs text-gray-500 dark:text-gray-400">Receba lembretes para estudar</p>
+                <p className="text-sm font-medium text-gray-700 dark:text-gray-300">{t('settings.emailReminder')}</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400">{t('settings.emailReminderDesc')}</p>
               </div>
               <button className="relative inline-flex h-6 w-11 items-center rounded-full bg-purple-600 transition-colors">
                 <span className="inline-block h-4 w-4 transform rounded-full bg-white transition-transform translate-x-6" />
@@ -181,8 +181,8 @@ export default function SettingsSection() {
             </div>
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-700 dark:text-gray-300">Novos conteúdos</p>
-                <p className="text-xs text-gray-500 dark:text-gray-400">Seja notificado sobre novos materiais</p>
+                <p className="text-sm font-medium text-gray-700 dark:text-gray-300">{t('settings.newContent')}</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400">{t('settings.newContentDesc')}</p>
               </div>
               <button className="relative inline-flex h-6 w-11 items-center rounded-full bg-purple-600 transition-colors">
                 <span className="inline-block h-4 w-4 transform rounded-full bg-white transition-transform translate-x-6" />
@@ -190,8 +190,8 @@ export default function SettingsSection() {
             </div>
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-700 dark:text-gray-300">Comunidade</p>
-                <p className="text-xs text-gray-500 dark:text-gray-400">Atividades da comunidade WhatsApp</p>
+                <p className="text-sm font-medium text-gray-700 dark:text-gray-300">{t('settings.communityNotifications')}</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400">{t('settings.communityNotificationsDesc')}</p>
               </div>
               <button className="relative inline-flex h-6 w-11 items-center rounded-full bg-gray-200 transition-colors">
                 <span className="inline-block h-4 w-4 transform rounded-full bg-white transition-transform translate-x-1" />
@@ -208,26 +208,26 @@ export default function SettingsSection() {
             <Shield className="h-5 w-5 text-red-600" />
           </div>
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Privacidade e Segurança</h3>
-            <p className="text-sm text-gray-600 dark:text-gray-300">Gerencie suas configurações de privacidade</p>
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{t('settings.privacyTitle')}</h3>
+            <p className="text-sm text-gray-600 dark:text-gray-300">{t('settings.privacySubtitle')}</p>
           </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <button className="flex items-center justify-between p-3 rounded-lg border border-gray-200 dark:border-gray-600 hover:border-gray-300 dark:hover:border-gray-500 transition-colors">
-            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Política de Privacidade</span>
+            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{t('settings.privacyPolicy')}</span>
             <span className="text-gray-400 dark:text-gray-500">→</span>
           </button>
           <button className="flex items-center justify-between p-3 rounded-lg border border-gray-200 dark:border-gray-600 hover:border-gray-300 dark:hover:border-gray-500 transition-colors">
-            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Termos de Uso</span>
+            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{t('settings.termsOfUse')}</span>
             <span className="text-gray-400 dark:text-gray-500">→</span>
           </button>
           <button className="flex items-center justify-between p-3 rounded-lg border border-gray-200 dark:border-gray-600 hover:border-gray-300 dark:hover:border-gray-500 transition-colors">
-            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Exportar dados</span>
+            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{t('settings.exportData')}</span>
             <span className="text-gray-400 dark:text-gray-500">→</span>
           </button>
           <button className="flex items-center justify-between p-3 rounded-lg border border-red-200 dark:border-red-800 hover:border-red-300 dark:hover:border-red-700 transition-colors text-red-600 dark:text-red-400">
-            <span className="text-sm font-medium">Excluir conta</span>
+            <span className="text-sm font-medium">{t('settings.deleteAccount')}</span>
             <span className="text-red-400 dark:text-red-500">→</span>
           </button>
         </div>
