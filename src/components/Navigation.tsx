@@ -13,13 +13,12 @@ export default function Navigation({ activeTab, onTabChange, lockedTabs = [] }: 
 
   const tabs = [
     { id: 'onboarding', label: t('nav.onboarding'), icon: Play },
-    { id: 'ai-assistant', label: t('nav.ai-assistant'), icon: Brain },
-    { id: 'teacher-poli', label: t('nav.teacher-poli'), icon: ExternalLink },
+    { id: 'ai-assistant', label: t('nav.aiAssistant'), icon: Brain },
+    { id: 'teacher-poli', label: t('nav.teacherPoli'), icon: ExternalLink },
     { id: 'resources', label: t('nav.resources'), icon: BookOpen },
     { id: 'community', label: t('nav.community'), icon: Users },
     { id: 'settings', label: t('nav.settings'), icon: Settings },
   ];
-
 
   return (
     <nav className="bg-white dark:bg-gray-800 shadow-sm">
