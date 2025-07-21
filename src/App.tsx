@@ -74,7 +74,7 @@ function App() {
         email: credentials.email,
         isVerified: true,
         hasPassword: true,
-        hasGeneratedPlan: true, // Assume returning users have generated plans
+        hasGeneratedPlan: false, // Reset to false so they can generate new plans
         firstAccess: false
       });
       setIsLoggedIn(true);

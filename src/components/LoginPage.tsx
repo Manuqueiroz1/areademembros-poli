@@ -129,8 +129,6 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
           <div className="mt-4 sm:mt-6 text-center space-y-2">
             <a
               href="#"
-              target="_blank"
-              rel="noopener noreferrer"
               className="text-purple-600 hover:text-purple-700 text-xs sm:text-sm font-medium"
               onClick={(e) => {
                 e.preventDefault();
@@ -143,12 +141,10 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
               Primeira vez aqui?{' '}
               <a
                 href="#"
-                target="_blank"
-                rel="noopener noreferrer"
                 className="text-purple-600 hover:text-purple-700 font-medium"
                 onClick={(e) => {
                   e.preventDefault();
-                  alert('Se você já comprou o curso, recarregue a página para fazer a verificação do seu e-mail.');
+                  window.location.reload();
                 }}
               >
                 Verificar e-mail da compra

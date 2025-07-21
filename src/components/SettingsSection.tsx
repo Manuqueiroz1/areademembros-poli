@@ -71,7 +71,7 @@ export default function SettingsSection() {
                       <span className={`text-sm font-medium ${
                         theme === themeOption.value ? 'text-purple-600 dark:text-purple-400' : 'text-gray-700 dark:text-gray-300'
                       }`}>
-                        {theme.label}
+                        {themeOption.label}
                       </span>
                     </button>
                   );
@@ -112,11 +112,11 @@ export default function SettingsSection() {
                     }`}
                   >
                     <div className="flex items-center space-x-3">
-                      <span className="text-xl">{language.flag}</span>
+                      <span className="text-xl">{languageOption.flag}</span>
                       <span className={`font-medium ${
                         language === languageOption.value ? 'text-blue-600 dark:text-blue-400' : 'text-gray-700 dark:text-gray-300'
                       }`}>
-                        {language.label}
+                        {languageOption.label}
                       </span>
                     </div>
                     {language === languageOption.value && (
