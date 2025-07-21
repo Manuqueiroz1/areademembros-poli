@@ -1,6 +1,5 @@
 import React from 'react';
 import { User, LogOut } from 'lucide-react';
-import { useLanguage } from '../hooks/useLanguage';
 
 interface HeaderProps {
   userName: string;
@@ -8,8 +7,6 @@ interface HeaderProps {
 }
 
 export default function Header({ userName, onLogout }: HeaderProps) {
-  const { t } = useLanguage();
-
   return (
     <header className="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -22,7 +19,7 @@ export default function Header({ userName, onLogout }: HeaderProps) {
             />
             <div className="ml-2 sm:ml-4">
               <h1 className="text-sm sm:text-xl font-bold text-gray-900 dark:text-white leading-tight">
-                <span className="hidden sm:inline">{t('header.title')}</span>
+                <span className="hidden sm:inline">Área de Membros - Teacher Poli</span>
                 <span className="sm:hidden">Teacher Poli</span>
               </h1>
             </div>
@@ -41,7 +38,7 @@ export default function Header({ userName, onLogout }: HeaderProps) {
               className="flex items-center space-x-1 px-2 sm:px-3 py-2 text-xs sm:text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
             >
               <LogOut className="h-4 w-4" />
-              <span className="hidden sm:inline">{t('header.logout')}</span>
+              <span className="hidden sm:inline">Sair</span>
             </button>
           </div>
         </div>

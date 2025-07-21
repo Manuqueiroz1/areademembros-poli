@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Play, CheckCircle, Clock, Lock } from 'lucide-react';
-import { useLanguage } from '../hooks/useLanguage';
 
 interface Video {
   id: string;
@@ -15,8 +14,8 @@ interface Video {
 const onboardingVideos: Video[] = [
   {
     id: '1',
-    title: 'onboarding.welcomeTitle',
-    description: 'onboarding.welcomeDesc',
+    title: 'Bem-vindo à Teacher Poli',
+    description: 'Conheça a plataforma e como ela pode transformar seu aprendizado',
     duration: '2:02',
     completed: true,
     locked: false,
@@ -24,8 +23,8 @@ const onboardingVideos: Video[] = [
   },
   {
     id: '2',
-    title: 'onboarding.cultureTitle',
-    description: 'onboarding.cultureDesc',
+    title: 'Nossa Cultura e Valores',
+    description: 'Conheça tudo aquilo que nos guia',
     duration: '3:33',
     completed: true,
     locked: false,
@@ -33,8 +32,8 @@ const onboardingVideos: Video[] = [
   },
   {
     id: '3',
-    title: 'onboarding.stepByStepTitle',
-    description: 'onboarding.stepByStepDesc',
+    title: 'Passo a Passo: Primeiro Acesso',
+    description: 'Como encontrar tudo que precisa para acessar pela primeira vez',
     duration: '00:57',
     completed: false,
     locked: false,
@@ -43,7 +42,6 @@ const onboardingVideos: Video[] = [
 ];
 
 export default function OnboardingSection() {
-  const { t } = useLanguage();
   const [selectedVideo, setSelectedVideo] = useState<Video | null>(onboardingVideos[0]);
   const [showPlayer, setShowPlayer] = useState(false);
 
@@ -62,8 +60,8 @@ export default function OnboardingSection() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
       <div className="mb-8">
-        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">{t('onboarding.title')}</h2>
-        <p className="text-sm sm:text-base text-gray-600">{t('onboarding.subtitle')}</p>
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Comece por Aqui</h2>
+        <p className="text-sm sm:text-base text-gray-600">Dê os primeiros passos na sua jornada de aprendizado com a Teacher Poli</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-8">
@@ -71,7 +69,7 @@ export default function OnboardingSection() {
         <div className="lg:col-span-1">
           <div className="bg-white rounded-lg shadow-sm border border-gray-200">
             <div className="p-4 sm:p-6 border-b border-gray-200">
-              <h3 className="text-base sm:text-lg font-semibold text-gray-900">{t('onboarding.videoList')}</h3>
+              <h3 className="text-base sm:text-lg font-semibold text-gray-900">Lista de Vídeos</h3>
             </div>
             <div className="divide-y divide-gray-200">
               {onboardingVideos.map((video) => (
@@ -98,10 +96,10 @@ export default function OnboardingSection() {
                     </div>
                     <div className="flex-1 min-w-0">
                       <h4 className="text-xs sm:text-sm font-medium text-gray-900 truncate">
-                        {t(video.title) as string}
+                        {video.title}
                       </h4>
                       <p className="text-xs sm:text-sm text-gray-500 mt-1 line-clamp-2">
-                        {t(video.description) as string}
+                        {video.description}
                       </p>
                       <div className="flex items-center mt-2 text-xs text-gray-400">
                         <Clock className="h-3 w-3 mr-1" />
@@ -132,10 +130,10 @@ export default function OnboardingSection() {
                   <div className="flex items-start justify-between">
                     <div>
                       <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2">
-                        {t(selectedVideo.title) as string}
+                        {selectedVideo.title}
                       </h3>
                       <p className="text-sm sm:text-base text-gray-600 mb-4">
-                        {t(selectedVideo.description) as string}
+                        {selectedVideo.description}
                       </p>
                     </div>
                     {!selectedVideo.completed && (
@@ -143,8 +141,8 @@ export default function OnboardingSection() {
                         onClick={() => markAsCompleted(selectedVideo.id)}
                         className="bg-purple-600 text-white px-3 sm:px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors text-xs sm:text-sm font-medium whitespace-nowrap"
                       >
-                        <span className="hidden sm:inline">{t('onboarding.markCompleted')}</span>
-                        <span className="sm:hidden">{t('onboarding.completed')}</span>
+                        <span className="hidden sm:inline">Marcar como Concluído</span>
+                        <span className="sm:hidden">Concluído</span>
                       </button>
                     )}
                   </div>
@@ -154,7 +152,7 @@ export default function OnboardingSection() {
               <div className="aspect-video flex items-center justify-center bg-gray-100 rounded-lg">
                 <div className="text-center">
                   <Play className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-                  <p className="text-gray-500">{t('onboarding.selectVideo')}</p>
+                  <p className="text-gray-500">Selecione um vídeo para começar</p>
                 </div>
               </div>
             )}

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Play, Brain, ExternalLink, BookOpen, Users, Settings, Lock } from 'lucide-react';
-import { useLanguage } from '../hooks/useLanguage';
 
 interface NavigationProps {
   activeTab: string;
@@ -9,15 +8,13 @@ interface NavigationProps {
 }
 
 export default function Navigation({ activeTab, onTabChange, lockedTabs = [] }: NavigationProps) {
-  const { t } = useLanguage();
-
   const tabs = [
-    { id: 'onboarding', label: t('nav.onboarding'), icon: Play },
-    { id: 'ai-assistant', label: t('nav.aiAssistant'), icon: Brain },
-    { id: 'teacher-poli', label: t('nav.teacherPoli'), icon: ExternalLink },
-    { id: 'resources', label: t('nav.resources'), icon: BookOpen },
-    { id: 'community', label: t('nav.community'), icon: Users },
-    { id: 'settings', label: t('nav.settings'), icon: Settings },
+    { id: 'onboarding', label: 'Comece por Aqui', icon: Play },
+    { id: 'ai-assistant', label: 'Gere seu Plano de Estudos', icon: Brain },
+    { id: 'teacher-poli', label: 'Teacher Poli', icon: ExternalLink },
+    { id: 'resources', label: 'Bônus', icon: BookOpen },
+    { id: 'community', label: 'Comunidade', icon: Users },
+    { id: 'settings', label: 'Configurações', icon: Settings },
   ];
 
   return (

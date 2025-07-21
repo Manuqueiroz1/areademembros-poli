@@ -14,10 +14,7 @@ import { User } from './types';
 import { useLocalStorage } from './hooks/useLocalStorage';
 import { useTheme } from './hooks/useTheme';
 
-import { useLanguage } from './hooks/useLanguage';
-
 function App() {
-  const { t } = useLanguage();
   // Initialize theme hook
   useTheme();
 
@@ -176,7 +173,7 @@ function App() {
           onClick={() => setActiveTab('ai-assistant')}
           className="inline-flex items-center px-6 py-3 bg-purple-600 text-white font-medium rounded-lg hover:bg-purple-700 transition-colors"
         >
-          {t('locked.generatePlan')}
+          Gerar Meu Plano de Estudos
         </button>
       </div>
     </div>
