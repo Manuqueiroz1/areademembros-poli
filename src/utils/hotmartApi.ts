@@ -1,6 +1,12 @@
 // 🔧 CONFIGURAÇÃO DA API DA HOTMART
 // Este arquivo contém as funções para integração com a Hotmart
 
+interface UserCredentials {
+  email: string;
+  password: string;
+  name: string;
+  createdAt: Date;
+}
 interface HotmartWebhookPayload {
   event: string;
   data: {
@@ -26,6 +32,56 @@ const HOTMART_CONFIG = {
   PRODUCT_ID: 'your_product_id'
 };
 
+// 🔧 FUNÇÃO PARA SALVAR CREDENCIAIS DO USUÁRIO
+export const saveUserCredentials = async (credentials: UserCredentials): Promise<boolean> => {
+  try {
+    // 🔧 IMPLEMENTAÇÃO REAL - SALVAR NO BACKEND
+    // Esta função deve salvar as credenciais do usuário no seu banco de dados
+    // IMPORTANTE: A senha deve ser hasheada antes de salvar!
+    
+    const response = await fetch('/api/users/create', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: credentials.email,
+        password: credentials.password, // Hash this password!
+        name: credentials.name,
+        createdAt: credentials.createdAt
+      }),
+    });
+
+    return response.ok;
+  } catch (error) {
+    console.error('Error saving user credentials:', error);
+    return false;
+  }
+};
+
+// 🔧 FUNÇÃO PARA VALIDAR LOGIN
+export const validateUserLogin = async (email: string, password: string): Promise<boolean> => {
+  try {
+    // 🔧 IMPLEMENTAÇÃO REAL - VALIDAR NO BACKEND
+    // Esta função deve validar as credenciais no seu banco de dados
+    
+    const response = await fetch('/api/users/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password // This should be hashed and compared
+      }),
+    });
+
+    return response.ok;
+  } catch (error) {
+    console.error('Error validating user login:', error);
+    return false;
+  }
+};
 export const verifyHotmartPurchase = async (email: string): Promise<boolean> => {
   try {
     // 🔧 IMPLEMENTAÇÃO REAL DA API DA HOTMART

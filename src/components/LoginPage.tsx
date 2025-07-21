@@ -128,22 +128,30 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
           {/* Links */}
           <div className="mt-4 sm:mt-6 text-center space-y-2">
             <a
-              href="https://teacherpoli.com/forgot-password"
+              href="#"
               target="_blank"
               rel="noopener noreferrer"
               className="text-purple-600 hover:text-purple-700 text-xs sm:text-sm font-medium"
+              onClick={(e) => {
+                e.preventDefault();
+                alert('Para recuperar sua senha, entre em contato conosco em suporte@teacherpoli.com');
+              }}
             >
               Esqueci minha senha
             </a>
             <div className="text-gray-500 text-xs sm:text-sm">
-              Não tem conta?{' '}
+              Primeira vez aqui?{' '}
               <a
-                href="https://teacherpoli.com/register"
+                href="#"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-purple-600 hover:text-purple-700 font-medium"
+                onClick={(e) => {
+                  e.preventDefault();
+                  alert('Se você já comprou o curso, recarregue a página para fazer a verificação do seu e-mail.');
+                }}
               >
-                Cadastre-se na Teacher Poli
+                Verificar e-mail da compra
               </a>
             </div>
           </div>

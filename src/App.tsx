@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import EmailVerificationPage from './components/EmailVerificationPage';
+import PasswordCreationPage from './components/PasswordCreationPage';
 import LoginPage from './components/LoginPage';
 import Header from './components/Header';
 import Navigation from './components/Navigation';
@@ -10,45 +11,84 @@ import EnhancedResourcesSection from './components/EnhancedResourcesSection';
 import CommunitySection from './components/CommunitySection';
 import SettingsSection from './components/SettingsSection';
 import { User, AppSettings } from './types';
+import { useLocalStorage } from './hooks/useLocalStorage';
 
 function App() {
   const [activeTab, setActiveTab] = useState('onboarding');
   const [user, setUser] = useState<User | null>(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [verifiedEmail, setVerifiedEmail] = useState<string | null>(null);
+  const [needsPasswordCreation, setNeedsPasswordCreation] = useState(false);
+  const [registeredUsers, setRegisteredUsers] = useLocalStorage<{[email: string]: {password: string, name: string}}>('teacherpoli_users', {});
   const [settings, setSettings] = useState<AppSettings>({
     theme: 'system',
     language: 'pt'
   });
 
   const handleEmailVerification = (email: string) => {
+    setVerifiedEmail(email);
+    
+    // Check if user already has a password
+    if (registeredUsers[email]) {
+      // User exists, go to login
+      setNeedsPasswordCreation(false);
+    } else {
+      // New user, needs to create password
+      setNeedsPasswordCreation(true);
+    }
+  };
+
+  const handlePasswordCreated = (email: string, password: string) => {
     const userName = email.split('@')[0];
+    
+    // Save user credentials
+    setRegisteredUsers(prev => ({
+      ...prev,
+      [email]: {
+        password: password, // In production, this should be hashed
+        name: userName.charAt(0).toUpperCase() + userName.slice(1)
+      }
+    }));
+    
+    // Log user in
     setUser({
       name: userName.charAt(0).toUpperCase() + userName.slice(1),
       email: email,
       isVerified: true,
+      hasPassword: true,
       hasGeneratedPlan: false,
       firstAccess: true
     });
     setIsLoggedIn(true);
+    setNeedsPasswordCreation(false);
+    setVerifiedEmail(null);
   };
 
   const handleLogin = (credentials: { email: string; password: string }) => {
-    // In a real app, this would validate credentials with your backend
-    // For now, we'll simulate a successful login
-    const userName = credentials.email.split('@')[0];
-    setUser({
-      name: userName.charAt(0).toUpperCase() + userName.slice(1),
-      email: credentials.email,
-      isVerified: true,
-      hasGeneratedPlan: true, // Assume returning users have generated plans
-      firstAccess: false
-    });
-    setIsLoggedIn(true);
+    const userRecord = registeredUsers[credentials.email];
+    
+    if (userRecord && userRecord.password === credentials.password) {
+      // Successful login
+      setUser({
+        name: userRecord.name,
+        email: credentials.email,
+        isVerified: true,
+        hasPassword: true,
+        hasGeneratedPlan: true, // Assume returning users have generated plans
+        firstAccess: false
+      });
+      setIsLoggedIn(true);
+    } else {
+      // Invalid credentials - this would be handled by the LoginPage component
+      console.error('Invalid credentials');
+    }
   };
 
   const handleLogout = () => {
     setUser(null);
     setIsLoggedIn(false);
+    setVerifiedEmail(null);
+    setNeedsPasswordCreation(false);
     setActiveTab('onboarding');
   };
 
@@ -61,13 +101,23 @@ function App() {
     }
   };
 
-  // Show email verification for first-time users
-  if (!isLoggedIn && !user) {
+  // Show password creation page if email is verified but password not created
+  if (verifiedEmail && needsPasswordCreation) {
+    return (
+      <PasswordCreationPage 
+        email={verifiedEmail}
+        onPasswordCreated={handlePasswordCreated}
+      />
+    );
+  }
+
+  // Show email verification for first-time users or if verified email needs login
+  if (!isLoggedIn && !user && !verifiedEmail) {
     return <EmailVerificationPage onVerificationSuccess={handleEmailVerification} />;
   }
 
   // Show login page if not logged in
-  if (!isLoggedIn || !user || !user.isVerified) {
+  if (!isLoggedIn || !user || !user.isVerified || !user.hasPassword) {
     return <LoginPage onLogin={handleLogin} />;
   }
 

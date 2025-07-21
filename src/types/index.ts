@@ -2,6 +2,7 @@ export interface User {
   name: string;
   email: string;
   isVerified: boolean;
+  hasPassword: boolean;
   hasGeneratedPlan: boolean;
   firstAccess: boolean;
 }
