@@ -41,7 +41,7 @@ export default function SettingsSection() {
             </div>
             <div>
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{t('settings.appearance')}</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-300">{t('settings.appearance.subtitle')}</p>
+              <p className="text-sm text-gray-600 dark:text-gray-300">{t('settings.appearanceSubtitle')}</p>
             </div>
           </div>
 
@@ -50,9 +50,9 @@ export default function SettingsSection() {
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">{t('settings.theme')}</label>
               <div className="grid grid-cols-3 gap-3">
                 {[
-                  { value: 'light', label: t('settings.theme.light'), icon: Sun },
-                  { value: 'dark', label: t('settings.theme.dark'), icon: Moon },
-                  { value: 'system', label: t('settings.theme.system'), icon: Monitor }
+                  { value: 'light', label: t('settings.themeLight'), icon: Sun },
+                  { value: 'dark', label: t('settings.themeDark'), icon: Moon },
+                  { value: 'system', label: t('settings.themeSystem'), icon: Monitor }
                 ].map((themeOption) => {
                   const Icon = themeOption.icon;
                   return (
@@ -89,13 +89,13 @@ export default function SettingsSection() {
             </div>
             <div>
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{t('settings.language')}</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-300">{t('settings.language.subtitle')}</p>
+              <p className="text-sm text-gray-600 dark:text-gray-300">{t('settings.languageSubtitle')}</p>
             </div>
           </div>
 
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">{t('settings.language.interface')}</label>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">{t('settings.languageInterface')}</label>
               <div className="space-y-2">
                 {[
                   { value: 'pt', label: 'Português', flag: '🇧🇷' },

@@ -6,8 +6,8 @@ export default function CommunitySection() {
   const { t } = useLanguage();
 
   const whatsappGroup = {
-    name: t('community.groupName') || 'Comunidade Teacher Poli',
-    description: t('community.groupDescription') || 'Comunidade oficial com todos os alunos da Teacher Poli para praticar inglês, tirar dúvidas e compartilhar experiências',
+    name: t('community.groupName'),
+    description: t('community.groupDescription'),
     members: '1.500+',
     link: 'https://chat.whatsapp.com/KJoq3lyYDqjIYOG5vjYo81?mode=r_c'
   };
@@ -15,23 +15,23 @@ export default function CommunitySection() {
   const benefits = [
     {
       icon: MessageCircle,
-      title: t('community.dailyPractice') || 'Prática Diária',
-      description: t('community.dailyPracticeDesc') || 'Pratique inglês todos os dias com outros alunos'
+      title: t('community.dailyPractice'),
+      description: t('community.dailyPracticeDesc')
     },
     {
       icon: Users,
-      title: t('community.networking') || 'Networking',
-      description: t('community.networkingDesc') || 'Conecte-se com pessoas que compartilham do mesmo objetivo que você'
+      title: t('community.networking'),
+      description: t('community.networkingDesc')
     },
     {
       icon: Phone,
-      title: t('community.quickHelp') || 'Ajuda Rápida',
-      description: t('community.quickHelpDesc') || 'Tire dúvidas rapidamente com a comunidade, sempre vai ter alguém disposto a ajudar'
+      title: t('community.quickHelp'),
+      description: t('community.quickHelpDesc')
     },
     {
       icon: Calendar,
-      title: t('community.exclusiveEvents') || 'Eventos Exclusivos',
-      description: t('community.exclusiveEventsDesc') || 'Participe de lives e eventos especiais todas as semanas'
+      title: t('community.exclusiveEvents'),
+      description: t('community.exclusiveEventsDesc')
     }
   ];
 

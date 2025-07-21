@@ -98,13 +98,13 @@ export default function OnboardingSection() {
                     </div>
                     <div className="flex-1 min-w-0">
                       <h4 className="text-xs sm:text-sm font-medium text-gray-900 truncate">
-                        {t(video.title)}
+                        {t(video.title) as string}
                       </h4>
                       <p className="text-xs sm:text-sm text-gray-500 mt-1 line-clamp-2">
-                          {t(selectedVideo.title)}
+                        {t(video.description) as string}
                       </p>
                       <div className="flex items-center mt-2 text-xs text-gray-400">
-                          {t(selectedVideo.description)}
+                        <Clock className="h-3 w-3 mr-1" />
                         {video.duration}
                       </div>
                     </div>
@@ -132,10 +132,10 @@ export default function OnboardingSection() {
                   <div className="flex items-start justify-between">
                     <div>
                       <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2">
-                        {selectedVideo.title}
+                        {t(selectedVideo.title) as string}
                       </h3>
                       <p className="text-sm sm:text-base text-gray-600 mb-4">
-                        {selectedVideo.description}
+                        {t(selectedVideo.description) as string}
                       </p>
                     </div>
                     {!selectedVideo.completed && (
