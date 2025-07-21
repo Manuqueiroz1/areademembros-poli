@@ -48,6 +48,7 @@ const sampleResources: Resource[] = [
   }
 ];
 
+export default function Resources() {
   const [selectedResource, setSelectedResource] = useState<Resource | null>(null);
   const [showModal, setShowModal] = useState(false);
   const [quizAnswers, setQuizAnswers] = useState<{ [key: string]: number }>({});
@@ -83,7 +84,6 @@ const sampleResources: Resource[] = [
   const handleResourceClick = (resource: Resource) => {
     setSelectedResource(resource);
     setShowModal(true);
-                  <p className="text-gray-600 mb-4">Visualização de PDF em desenvolvimento</p>
     if (resource.type === 'quiz') {
       setQuizAnswers({});
       setQuizSubmitted(false);
@@ -200,7 +200,7 @@ const sampleResources: Resource[] = [
           <div className="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto">
             <div className="p-6">
               <div className="flex items-center justify-between mb-4">
-                <p className="text-gray-600 mb-4">{t('resources.pdfPreview')}</p>
+                <h3 className="text-xl font-bold text-gray-900">{selectedResource.title}</h3>
                 <button
                   onClick={() => setShowModal(false)}
                   className="text-gray-400 hover:text-gray-600"
@@ -312,7 +312,7 @@ const sampleResources: Resource[] = [
               )}
 
               <p className="text-gray-600 text-sm mt-4">{selectedResource.description}</p>
-            © 2024 Teacher Poli. Todos os direitos reservados.
+            </div>
           </div>
         </div>
       )}
