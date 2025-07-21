@@ -102,7 +102,7 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
             {/* Error Message */}
             {error && (
               <div className="bg-red-50 border border-red-200 rounded-lg p-3">
-                {t('login.enter')}
+                <p className="text-red-600 text-sm">{error}</p>
               </div>
             )}
 
@@ -117,14 +117,51 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
               ) : (
                 <>
                   <LogIn className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
-                  Entrar
+                  {t('login.enter')}
                 </>
               )}
             </button>
-            {t('login.forgotPassword')}
 
-          {/* Links */}
-            {t('login.firstTime')}{' '}
+            {/* Links */}
+            <div className="text-center">
+              <a
+                href="#"
+                className="text-purple-600 hover:text-purple-700 text-xs sm:text-sm font-medium"
+                onClick={(e) => {
+                  e.preventDefault();
+                  alert('Para recuperar sua senha, entre em contato conosco em suporte@teacherpoli.com');
+                }}
+              >
+                {t('login.forgotPassword')}
+              </a>
+            </div>
+
+            <div className="text-center text-gray-500 text-xs sm:text-sm">
+              {t('login.firstTime')}{' '}
+              <a
+                href="#"
+                className="text-purple-600 hover:text-purple-700 font-medium"
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.location.reload();
+                }}
+              >
+                {t('login.verifyPurchaseEmail')}
+              </a>
+            </div>
+          </form>
+        </div>
+
+        {/* Footer */}
+        <div className="text-center mt-6 sm:mt-8">
+          <p className="text-purple-100 text-xs sm:text-sm">
+            © 2025 Teacher Poli. Todos os direitos reservados.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
             <a
               href="#"
               className="text-purple-600 hover:text-purple-700 text-xs sm:text-sm font-medium"

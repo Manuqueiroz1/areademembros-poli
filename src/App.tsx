@@ -14,7 +14,10 @@ import { User } from './types';
 import { useLocalStorage } from './hooks/useLocalStorage';
 import { useTheme } from './hooks/useTheme';
 
+import { useLanguage } from './hooks/useLanguage';
+
 function App() {
+  const { t } = useLanguage();
   // Initialize theme hook
   useTheme();
 

@@ -98,6 +98,46 @@ const translations: Translations = {
     es: 'Cree un plan personalizado de 30 días con nuestra IA especializada en enseñanza de inglés',
     en: 'Create a personalized 30-day plan with our AI specialized in English teaching'
   },
+  'ai.welcomeMessage': {
+    pt: 'Olá! Sou sua assistente de IA da Teacher Poli. Estou aqui para ajudar você a criar um plano de estudos personalizado. Para começar, me conte sobre seus objetivos de aprendizado e seu nível atual.',
+    es: '¡Hola! Soy tu asistente de IA de Teacher Poli. Estoy aquí para ayudarte a crear un plan de estudios personalizado. Para empezar, cuéntame sobre tus objetivos de aprendizaje y tu nivel actual.',
+    en: 'Hello! I am your Teacher Poli AI assistant. I am here to help you create a personalized study plan. To get started, tell me about your learning goals and current level.'
+  },
+  'ai.basicEnglish': {
+    pt: 'Inglês Básico',
+    es: 'Inglés Básico',
+    en: 'Basic English'
+  },
+  'ai.basicEnglishDesc': {
+    pt: 'Plano para iniciantes em inglês',
+    es: 'Plan para principiantes en inglés',
+    en: 'Plan for English beginners'
+  },
+  'ai.intermediateEnglish': {
+    pt: 'Inglês Intermediário',
+    es: 'Inglés Intermedio',
+    en: 'Intermediate English'
+  },
+  'ai.intermediateEnglishDesc': {
+    pt: 'Aperfeiçoe suas habilidades',
+    es: 'Perfeccione sus habilidades',
+    en: 'Improve your skills'
+  },
+  'ai.advancedEnglish': {
+    pt: 'Inglês Avançado',
+    es: 'Inglés Avanzado',
+    en: 'Advanced English'
+  },
+  'ai.advancedEnglishDesc': {
+    pt: 'Fluência e proficiência',
+    es: 'Fluidez y competencia',
+    en: 'Fluency and proficiency'
+  },
+  'ai.30days': {
+    pt: '30 dias',
+    es: '30 días',
+    en: '30 days'
+  },
   'ai.quickTemplates': {
     pt: 'Templates Rápidos',
     es: 'Plantillas Rápidas',

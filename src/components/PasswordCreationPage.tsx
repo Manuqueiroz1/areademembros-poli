@@ -224,12 +224,12 @@ export default function PasswordCreationPage({ email, onPasswordCreated }: Passw
               <div className="bg-red-50 border border-red-200 rounded-lg p-3">
                 <div className="flex items-start space-x-2">
                   <AlertCircle className="h-5 w-5 text-red-500 flex-shrink-0 mt-0.5" />
-                {t('password.creating')}
+                    <div>
                     {errors.map((error, index) => (
                       <p key={index} className="text-red-600 text-sm">{error}</p>
                     ))}
                   </div>
-                {t('password.createAndContinue')}
+                  </div>
               </div>
             )}
 
