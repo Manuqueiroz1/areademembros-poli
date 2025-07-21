@@ -10,20 +10,20 @@ import TeacherPoliSection from './components/TeacherPoliSection';
 import EnhancedResourcesSection from './components/EnhancedResourcesSection';
 import CommunitySection from './components/CommunitySection';
 import SettingsSection from './components/SettingsSection';
-import { User, AppSettings } from './types';
+import { User } from './types';
 import { useLocalStorage } from './hooks/useLocalStorage';
+import { useTheme } from './hooks/useTheme';
 
 function App() {
+  // Initialize theme hook
+  useTheme();
+
   const [activeTab, setActiveTab] = useState('onboarding');
   const [user, setUser] = useState<User | null>(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [verifiedEmail, setVerifiedEmail] = useState<string | null>(null);
   const [needsPasswordCreation, setNeedsPasswordCreation] = useState(false);
   const [registeredUsers, setRegisteredUsers] = useLocalStorage<{[email: string]: {password: string, name: string}}>('teacherpoli_users', {});
-  const [settings, setSettings] = useState<AppSettings>({
-    theme: 'system',
-    language: 'pt'
-  });
 
   const handleEmailVerification = (email: string) => {
     setVerifiedEmail(email);
@@ -142,7 +142,7 @@ function App() {
       case 'community':
         return isModuleLocked('community') ? renderLockedModule() : <CommunitySection />;
       case 'settings':
-        return <SettingsSection settings={settings} onSettingsChange={setSettings} />;
+        return <SettingsSection />;
       default:
         return <OnboardingSection />;
     }
@@ -169,7 +169,7 @@ function App() {
   );
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors">
       <Header userName={user.name} onLogout={handleLogout} />
       <Navigation 
         activeTab={activeTab} 
