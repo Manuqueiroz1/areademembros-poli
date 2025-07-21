@@ -85,7 +85,6 @@ export default function EnhancedResourcesSection() {
   const handleResourceClick = (resource: Resource) => {
     setSelectedResource(resource);
     setShowModal(true);
-                <div className="text-purple-200 text-xs sm:text-sm">gratuito</div>
     if (resource.type === 'quiz') {
       setQuizAnswers({});
       setQuizSubmitted(false);
@@ -202,7 +201,7 @@ export default function EnhancedResourcesSection() {
           <div className="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto">
             <div className="p-6">
               <div className="flex items-center justify-between mb-4">
-                <p className="text-gray-600 mb-4">{t('resources.pdfPreview')}</p>
+                <h3 className="text-xl font-bold text-gray-900">{selectedResource.title}</h3>
                 <button
                   onClick={() => setShowModal(false)}
                   className="text-gray-400 hover:text-gray-600"
@@ -305,19 +304,35 @@ export default function EnhancedResourcesSection() {
                         {quizScore === selectedResource.questions.length
                           ? `🎉 ${t('resources.quizResult')}`
                           : quizScore >= selectedResource.questions.length / 2
-            <h4 className="text-sm sm:text-base font-semibold text-gray-900 mb-2">Pratique Listening</h4>
-            <p className="text-gray-600 text-xs sm:text-sm">Ouça podcasts e músicas em inglês regularmente</p>
-        <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6">Dicas de Estudo</h3>
+                          ? `👍 ${t('resources.goodJob')}`
+                          : `📚 ${t('resources.keepStudying')}`}
+                      </p>
                     </div>
                   )}
                 </div>
               )}
-
-            <h4 className="text-sm sm:text-base font-semibold text-gray-900 mb-2">Pratique Conversação</h4>
-            <p className="text-gray-600 text-xs sm:text-sm">Converse com outros estudantes na comunidade</p>
+            </div>
           </div>
         </div>
       )}
+
+      {/* Study Tips Section */}
+      <div className="mt-12 bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg p-6">
+        <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6">Dicas de Estudo</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="bg-white rounded-lg p-4 shadow-sm">
+            <h4 className="text-sm sm:text-base font-semibold text-gray-900 mb-2">Pratique Listening</h4>
+            <p className="text-gray-600 text-xs sm:text-sm">Ouça podcasts e músicas em inglês regularmente</p>
+          </div>
+          <div className="bg-white rounded-lg p-4 shadow-sm">
+            <h4 className="text-sm sm:text-base font-semibold text-gray-900 mb-2">Pratique Conversação</h4>
+            <p className="text-gray-600 text-xs sm:text-sm">Converse com outros estudantes na comunidade</p>
+          </div>
+          <div className="bg-white rounded-lg p-4 shadow-sm">
+            <div className="text-purple-200 text-xs sm:text-sm">gratuito</div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
