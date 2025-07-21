@@ -1,10 +1,13 @@
 import React from 'react';
 import { MessageCircle, Users, ExternalLink, Phone, Calendar, Star } from 'lucide-react';
+import { useLanguage } from '../hooks/useLanguage';
 
 export default function CommunitySection() {
+  const { t } = useLanguage();
+
   const whatsappGroup = {
-    name: 'Comunidade Teacher Poli',
-    description: 'Comunidade oficial com todos os alunos da Teacher Poli para praticar inglês, tirar dúvidas e compartilhar experiências',
+    name: t('community.groupName') || 'Comunidade Teacher Poli',
+    description: t('community.groupDescription') || 'Comunidade oficial com todos os alunos da Teacher Poli para praticar inglês, tirar dúvidas e compartilhar experiências',
     members: '1.500+',
     link: 'https://chat.whatsapp.com/KJoq3lyYDqjIYOG5vjYo81?mode=r_c'
   };
@@ -12,31 +15,31 @@ export default function CommunitySection() {
   const benefits = [
     {
       icon: MessageCircle,
-      title: 'Prática Diária',
-      description: 'Pratique inglês todos os dias com outros alunos'
+      title: t('community.dailyPractice') || 'Prática Diária',
+      description: t('community.dailyPracticeDesc') || 'Pratique inglês todos os dias com outros alunos'
     },
     {
       icon: Users,
-      title: 'Networking',
-      description: 'Conecte-se com pessoas que compartilham do mesmo objetivo que você'
+      title: t('community.networking') || 'Networking',
+      description: t('community.networkingDesc') || 'Conecte-se com pessoas que compartilham do mesmo objetivo que você'
     },
     {
       icon: Phone,
-      title: 'Ajuda Rápida',
-      description: 'Tire dúvidas rapidamente com a comunidade, sempre vai ter alguém disposto a ajudar'
+      title: t('community.quickHelp') || 'Ajuda Rápida',
+      description: t('community.quickHelpDesc') || 'Tire dúvidas rapidamente com a comunidade, sempre vai ter alguém disposto a ajudar'
     },
     {
       icon: Calendar,
-      title: 'Eventos Exclusivos',
-      description: 'Participe de lives e eventos especiais todas as semanas'
+      title: t('community.exclusiveEvents') || 'Eventos Exclusivos',
+      description: t('community.exclusiveEventsDesc') || 'Participe de lives e eventos especiais todas as semanas'
     }
   ];
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
       <div className="mb-8">
-        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Comunidade WhatsApp</h2>
-        <p className="text-sm sm:text-base text-gray-600">Conecte-se com milhares de estudantes e pratique inglês todos os dias</p>
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">{t('community.title')}</h2>
+        <p className="text-sm sm:text-base text-gray-600">{t('community.subtitle')}</p>
       </div>
 
       {/* Hero Section - CORRIGIDO */}
@@ -44,16 +47,12 @@ export default function CommunitySection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-8 items-center">
           {/* ✅ PRIMEIRA COLUNA - Conteúdo principal */}
           <div>
-            <h3 className="text-xl sm:text-3xl font-bold mb-4">
-              Junte-se à Nossa Comunidade
-            </h3>
-            <p className="text-green-100 mb-6 text-sm sm:text-lg">
-              Mais de 1.500 alunos ativos praticando inglês, compartilhando experiências e se ajudando mutuamente.
-            </p>
+            <h3 className="text-xl sm:text-3xl font-bold mb-4">{t('community.joinTitle')}</h3>
+            <p className="text-green-100 mb-6 text-sm sm:text-lg">{t('community.joinDescription')}</p>
             <div className="flex items-center space-x-6 text-green-100">
               <div className="text-center">
                 <div className="text-xl sm:text-2xl font-bold">1.500+</div>
-                <div className="text-xs sm:text-sm">Membros Ativos</div>
+                <div className="text-xs sm:text-sm">{t('community.activeMembers')}</div>
               </div>
             </div>
           </div> {/* ✅ FECHAMENTO CORRETO DA PRIMEIRA COLUNA */}
@@ -96,7 +95,7 @@ export default function CommunitySection() {
             <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-2">{whatsappGroup.name}</h3>
             <div className="flex items-center justify-center text-gray-500 mb-4">
               <Users className="h-4 w-4 mr-1" />
-              <span className="text-sm sm:text-base">{whatsappGroup.members} membros ativos</span>
+              <span className="text-sm sm:text-base">{whatsappGroup.members} {t('community.membersCount')}</span>
             </div>
           </div>
           
@@ -110,8 +109,8 @@ export default function CommunitySection() {
               className="inline-flex items-center px-4 sm:px-8 py-3 sm:py-4 bg-green-600 text-white text-sm sm:text-lg font-semibold rounded-lg hover:bg-green-700 transition-colors shadow-lg"
             >
               <MessageCircle className="mr-2 sm:mr-3 h-4 w-4 sm:h-5 sm:w-5" />
-              <span className="hidden sm:inline">Entrar na Comunidade</span>
-              <span className="sm:hidden">Entrar</span>
+              <span className="hidden sm:inline">{t('community.enterCommunity')}</span>
+              <span className="sm:hidden">{t('community.enter')}</span>
               <ExternalLink className="ml-2 h-4 w-4" />
             </a>
           </div>
@@ -120,7 +119,7 @@ export default function CommunitySection() {
 
       {/* Community Features */}
       <div className="mt-8 sm:mt-12 bg-white rounded-lg shadow-sm border border-gray-200 p-4 sm:p-8">
-        <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6 text-center">O que você encontra na comunidade</h3>
+        <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6 text-center">{t('community.whatYouFind')}</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {benefits.map((benefit, index) => {
             const Icon = benefit.icon;
@@ -139,10 +138,10 @@ export default function CommunitySection() {
 
       {/* Rules */}
       <div className="mt-8 sm:mt-12 bg-white rounded-lg shadow-sm border border-gray-200 p-4 sm:p-8">
-        <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6">Regras da Comunidade</h3>
+        <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6">{t('community.rules')}</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
           <div>
-            <h4 className="text-sm sm:text-base font-semibold text-gray-900 mb-3">✅ Permitido:</h4>
+            <h4 className="text-sm sm:text-base font-semibold text-gray-900 mb-3">{t('community.allowed')}</h4>
             <ul className="space-y-2 text-gray-600 text-xs sm:text-sm">
               <li>• Praticar inglês com outros membros</li>
               <li>• Compartilhar dúvidas sobre os cursos</li>
@@ -153,7 +152,7 @@ export default function CommunitySection() {
           </div>
           
           <div>
-            <h4 className="text-sm sm:text-base font-semibold text-gray-900 mb-3">❌ Não permitido:</h4>
+            <h4 className="text-sm sm:text-base font-semibold text-gray-900 mb-3">{t('community.notAllowed')}</h4>
             <ul className="space-y-2 text-gray-600 text-xs sm:text-sm">
               <li>• Spam ou mensagens promocionais</li>
               <li>• Conteúdo ofensivo ou inadequado</li>

@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { Eye, EyeOff, LogIn, Mail, Lock } from 'lucide-react';
+import { useLanguage } from '../hooks/useLanguage';
 
 interface LoginPageProps {
   onLogin: (credentials: { email: string; password: string }) => void;
 }
 
 export default function LoginPage({ onLogin }: LoginPageProps) {
+  const { t } = useLanguage();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -39,10 +41,10 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
             className="h-12 sm:h-16 w-auto mx-auto mb-4"
           />
           <h1 className="text-xl sm:text-3xl font-bold text-white mb-2 leading-tight">
-            <span className="hidden sm:inline">Área de Membros - Teacher Poli</span>
-            <span className="sm:hidden">Teacher Poli</span>
+            <span className="hidden sm:inline">{t('login.title')}</span>
+            <span className="sm:hidden">{t('login.titleShort')}</span>
           </h1>
-          <p className="text-purple-100 text-sm sm:text-base">Acesse com suas credenciais da Teacher Poli</p>
+          <p className="text-purple-100 text-sm sm:text-base">{t('login.subtitle')}</p>
         </div>
 
         {/* Login Form */}
@@ -50,9 +52,7 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Email Field */}
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                E-mail
-              </label>
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">{t('login.email')}</label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                   <Mail className="h-4 w-4 sm:h-5 sm:w-5 text-gray-400" />
@@ -71,9 +71,7 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
 
             {/* Password Field */}
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
-                Senha
-              </label>
+              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">{t('login.password')}</label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                   <Lock className="h-4 w-4 sm:h-5 sm:w-5 text-gray-400" />
@@ -104,7 +102,7 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
             {/* Error Message */}
             {error && (
               <div className="bg-red-50 border border-red-200 rounded-lg p-3">
-                <p className="text-red-600 text-xs sm:text-sm">{error}</p>
+                {t('login.enter')}
               </div>
             )}
 
@@ -123,10 +121,10 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
                 </>
               )}
             </button>
-          </form>
+            {t('login.forgotPassword')}
 
           {/* Links */}
-          <div className="mt-4 sm:mt-6 text-center space-y-2">
+            {t('login.firstTime')}{' '}
             <a
               href="#"
               className="text-purple-600 hover:text-purple-700 text-xs sm:text-sm font-medium"
@@ -135,7 +133,7 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
                 alert('Para recuperar sua senha, entre em contato conosco em suporte@teacherpoli.com');
               }}
             >
-              Esqueci minha senha
+              {t('login.verifyPurchaseEmail')}
             </a>
             <div className="text-gray-500 text-xs sm:text-sm">
               Primeira vez aqui?{' '}

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Mail, CheckCircle, AlertCircle, Loader } from 'lucide-react';
+import { useLanguage } from '../hooks/useLanguage';
 
 interface EmailVerificationPageProps {
   onVerificationSuccess: (email: string) => void;
@@ -15,6 +16,7 @@ const TEST_EMAILS = [
 ];
 
 export default function EmailVerificationPage({ onVerificationSuccess }: EmailVerificationPageProps) {
+  const { t } = useLanguage();
   const [email, setEmail] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
@@ -85,12 +87,8 @@ export default function EmailVerificationPage({ onVerificationSuccess }: EmailVe
             alt="Teacher Poli" 
             className="h-12 sm:h-16 w-auto mx-auto mb-4"
           />
-          <h1 className="text-xl sm:text-3xl font-bold text-white mb-2 leading-tight">
-            Bem-vindo à Teacher Poli!
-          </h1>
-          <p className="text-purple-100 text-sm sm:text-base">
-            Para acessar sua área de membros, confirme o e-mail usado na compra
-          </p>
+          <h1 className="text-xl sm:text-3xl font-bold text-white mb-2 leading-tight">{t('email.welcome')}</h1>
+          <p className="text-purple-100 text-sm sm:text-base">{t('email.confirmEmail')}</p>
         </div>
 
         {/* Verification Form */}
@@ -99,19 +97,13 @@ export default function EmailVerificationPage({ onVerificationSuccess }: EmailVe
             <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
               <Mail className="h-8 w-8 text-purple-600" />
             </div>
-            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">
-              Verificação de E-mail
-            </h2>
-            <p className="text-gray-600 text-sm">
-              Digite o e-mail que você usou para comprar o curso na Hotmart
-            </p>
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">{t('email.verification')}</h2>
+            <p className="text-gray-600 text-sm">{t('email.enterEmail')}</p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                E-mail da compra
-              </label>
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">{t('email.purchaseEmail')}</label>
               <input
                 id="email"
                 type="email"
@@ -138,12 +130,12 @@ export default function EmailVerificationPage({ onVerificationSuccess }: EmailVe
               {isLoading ? (
                 <>
                   <Loader className="mr-2 h-5 w-5 animate-spin" />
-                  Verificando...
+                  {t('email.verifying')}
                 </>
               ) : (
                 <>
                   <CheckCircle className="mr-2 h-5 w-5" />
-                  Verificar E-mail
+                  {t('email.verifyEmail')}
                 </>
               )}
             </button>
@@ -155,18 +147,17 @@ export default function EmailVerificationPage({ onVerificationSuccess }: EmailVe
               onClick={handleTestMode}
               className="w-full text-center text-sm text-gray-500 hover:text-gray-700 transition-colors"
             >
-              🔧 Modo de Teste (Desenvolvimento)
+              {t('email.testMode')}
             </button>
           </div>
 
           <div className="mt-6 text-center">
-            <p className="text-gray-500 text-xs sm:text-sm">
-              Não encontrou seu e-mail?{' '}
+            <p className="text-gray-500 text-xs sm:text-sm">{t('email.notFound')}{' '}
               <a
                 href="mailto:suporte@teacherpoli.com"
                 className="text-purple-600 hover:text-purple-700 font-medium"
               >
-                Entre em contato conosco
+                {t('email.contact')}
               </a>
             </p>
           </div>

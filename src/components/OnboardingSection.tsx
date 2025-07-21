@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Play, CheckCircle, Clock, Lock } from 'lucide-react';
+import { useLanguage } from '../hooks/useLanguage';
 
 interface Video {
   id: string;
@@ -42,6 +43,7 @@ const onboardingVideos: Video[] = [
 ];
 
 export default function OnboardingSection() {
+  const { t } = useLanguage();
   const [selectedVideo, setSelectedVideo] = useState<Video | null>(onboardingVideos[0]);
   const [showPlayer, setShowPlayer] = useState(false);
 
@@ -60,8 +62,8 @@ export default function OnboardingSection() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
       <div className="mb-8">
-        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Comece por Aqui</h2>
-        <p className="text-sm sm:text-base text-gray-600">Dê os primeiros passos na sua jornada de aprendizado com a Teacher Poli</p>
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">{t('onboarding.title')}</h2>
+        <p className="text-sm sm:text-base text-gray-600">{t('onboarding.subtitle')}</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-8">
@@ -69,7 +71,7 @@ export default function OnboardingSection() {
         <div className="lg:col-span-1">
           <div className="bg-white rounded-lg shadow-sm border border-gray-200">
             <div className="p-4 sm:p-6 border-b border-gray-200">
-              <h3 className="text-base sm:text-lg font-semibold text-gray-900">Lista de Vídeos</h3>
+              <h3 className="text-base sm:text-lg font-semibold text-gray-900">{t('onboarding.videoList')}</h3>
             </div>
             <div className="divide-y divide-gray-200">
               {onboardingVideos.map((video) => (
@@ -141,8 +143,8 @@ export default function OnboardingSection() {
                         onClick={() => markAsCompleted(selectedVideo.id)}
                         className="bg-purple-600 text-white px-3 sm:px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors text-xs sm:text-sm font-medium whitespace-nowrap"
                       >
-                        <span className="hidden sm:inline">Marcar como Concluído</span>
-                        <span className="sm:hidden">Concluído</span>
+                        <span className="hidden sm:inline">{t('onboarding.markCompleted')}</span>
+                        <span className="sm:hidden">{t('onboarding.completed')}</span>
                       </button>
                     )}
                   </div>
@@ -152,7 +154,7 @@ export default function OnboardingSection() {
               <div className="aspect-video flex items-center justify-center bg-gray-100 rounded-lg">
                 <div className="text-center">
                   <Play className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-                  <p className="text-gray-500">Selecione um vídeo para começar</p>
+                  <p className="text-gray-500">{t('onboarding.selectVideo')}</p>
                 </div>
               </div>
             )}

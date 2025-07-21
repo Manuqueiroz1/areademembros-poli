@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Eye, EyeOff, Lock, CheckCircle, AlertCircle, Loader } from 'lucide-react';
+import { useLanguage } from '../hooks/useLanguage';
 
 interface PasswordCreationPageProps {
   email: string;
@@ -7,6 +8,7 @@ interface PasswordCreationPageProps {
 }
 
 export default function PasswordCreationPage({ email, onPasswordCreated }: PasswordCreationPageProps) {
+  const { t } = useLanguage();
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -90,12 +92,8 @@ export default function PasswordCreationPage({ email, onPasswordCreated }: Passw
             alt="Teacher Poli" 
             className="h-12 sm:h-16 w-auto mx-auto mb-4"
           />
-          <h1 className="text-xl sm:text-3xl font-bold text-white mb-2 leading-tight">
-            Crie sua Senha
-          </h1>
-          <p className="text-purple-100 text-sm sm:text-base">
-            E-mail verificado com sucesso! Agora crie uma senha segura para acessar sua conta.
-          </p>
+          <h1 className="text-xl sm:text-3xl font-bold text-white mb-2 leading-tight">{t('password.createTitle')}</h1>
+          <p className="text-purple-100 text-sm sm:text-base">{t('password.verified')}</p>
         </div>
 
         {/* Password Creation Form */}
@@ -104,23 +102,17 @@ export default function PasswordCreationPage({ email, onPasswordCreated }: Passw
             <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
               <CheckCircle className="h-8 w-8 text-green-600" />
             </div>
-            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">
-              E-mail Verificado!
-            </h2>
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">{t('password.emailVerified')}</h2>
             <p className="text-gray-600 text-sm">
               <strong>{email}</strong>
             </p>
-            <p className="text-gray-500 text-xs mt-1">
-              Agora crie uma senha para acessar sua conta
-            </p>
+            <p className="text-gray-500 text-xs mt-1">{t('password.createSecure')}</p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Password Field */}
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
-                Nova Senha
-              </label>
+              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">{t('password.newPassword')}</label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                   <Lock className="h-4 w-4 sm:h-5 sm:w-5 text-gray-400" />
@@ -151,7 +143,7 @@ export default function PasswordCreationPage({ email, onPasswordCreated }: Passw
               {password && (
                 <div className="mt-2">
                   <div className="flex items-center justify-between text-xs mb-1">
-                    <span className="text-gray-500">Força da senha:</span>
+                  <span className="text-gray-500">{t('password.strength')}</span>
                     <span className={`font-medium ${
                       passwordStrength.strength >= 75 ? 'text-green-600' :
                       passwordStrength.strength >= 50 ? 'text-yellow-600' :
@@ -172,9 +164,7 @@ export default function PasswordCreationPage({ email, onPasswordCreated }: Passw
 
             {/* Confirm Password Field */}
             <div>
-              <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 mb-2">
-                Confirmar Senha
-              </label>
+              <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 mb-2">{t('password.confirmPassword')}</label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                   <Lock className="h-4 w-4 sm:h-5 sm:w-5 text-gray-400" />
@@ -204,7 +194,7 @@ export default function PasswordCreationPage({ email, onPasswordCreated }: Passw
 
             {/* Password Requirements */}
             <div className="bg-gray-50 rounded-lg p-4">
-              <h4 className="text-sm font-medium text-gray-700 mb-2">Requisitos da senha:</h4>
+              <h4 className="text-sm font-medium text-gray-700 mb-2">{t('password.requirements')}</h4>
               <ul className="text-xs text-gray-600 space-y-1">
                 <li className={`flex items-center ${password.length >= 8 ? 'text-green-600' : ''}`}>
                   <span className="mr-2">{password.length >= 8 ? '✓' : '•'}</span>
@@ -234,12 +224,12 @@ export default function PasswordCreationPage({ email, onPasswordCreated }: Passw
               <div className="bg-red-50 border border-red-200 rounded-lg p-3">
                 <div className="flex items-start space-x-2">
                   <AlertCircle className="h-5 w-5 text-red-500 flex-shrink-0 mt-0.5" />
-                  <div>
+                {t('password.creating')}
                     {errors.map((error, index) => (
                       <p key={index} className="text-red-600 text-sm">{error}</p>
                     ))}
                   </div>
-                </div>
+                {t('password.createAndContinue')}
               </div>
             )}
 

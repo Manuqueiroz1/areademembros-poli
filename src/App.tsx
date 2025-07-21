@@ -167,15 +167,13 @@ function App() {
         <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
           <span className="text-2xl">🔒</span>
         </div>
-        <h2 className="text-2xl font-bold text-gray-900 mb-4">Módulo Bloqueado</h2>
-        <p className="text-gray-600 mb-6">
-          Para acessar este módulo, você precisa primeiro gerar seu plano de estudos personalizado.
-        </p>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">{t('locked.title')}</h2>
+        <p className="text-gray-600 dark:text-gray-300 mb-6">{t('locked.description')}</p>
         <button
           onClick={() => setActiveTab('ai-assistant')}
           className="inline-flex items-center px-6 py-3 bg-purple-600 text-white font-medium rounded-lg hover:bg-purple-700 transition-colors"
         >
-          Gerar Meu Plano de Estudos
+          {t('locked.generatePlan')}
         </button>
       </div>
     </div>

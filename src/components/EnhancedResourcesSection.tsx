@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Download, FileText, Video, HelpCircle, Play, CheckCircle, X, Eye } from 'lucide-react';
 import { Resource, QuizQuestion } from '../types';
+import { useLanguage } from '../hooks/useLanguage';
 
 const sampleResources: Resource[] = [
   {
@@ -50,6 +51,7 @@ const sampleResources: Resource[] = [
 ];
 
 export default function EnhancedResourcesSection() {
+  const { t } = useLanguage();
   const [selectedResource, setSelectedResource] = useState<Resource | null>(null);
   const [showModal, setShowModal] = useState(false);
   const [quizAnswers, setQuizAnswers] = useState<{ [key: string]: number }>({});
@@ -127,8 +129,8 @@ export default function EnhancedResourcesSection() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
       <div className="mb-8">
-        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Bônus Exclusivos</h2>
-        <p className="text-sm sm:text-base text-gray-600">Materiais extras, vídeos e quizzes para turbinar seus estudos</p>
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">{t('resources.title')}</h2>
+        <p className="text-sm sm:text-base text-gray-600">{t('resources.subtitle')}</p>
       </div>
 
       {/* Resources Grid */}
@@ -172,8 +174,8 @@ export default function EnhancedResourcesSection() {
                      resource.type === 'quiz' ? <HelpCircle className="mr-1 h-4 w-4" /> :
                      <Eye className="mr-1 h-4 w-4" />}
                     <span className="hidden sm:inline">
-                      {resource.type === 'video' ? 'Assistir' : 
-                       resource.type === 'quiz' ? 'Fazer Quiz' : 'Visualizar'}
+                      {resource.type === 'video' ? t('resources.watch') : 
+                       resource.type === 'quiz' ? t('resources.takeQuiz') : t('resources.view')}
                     </span>
                     <span className="sm:hidden">
                       {resource.type === 'video' ? '▶' : 
@@ -226,13 +228,13 @@ export default function EnhancedResourcesSection() {
               {selectedResource.type === 'pdf' && (
                 <div className="text-center py-12">
                   <FileText className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-                  <p className="text-gray-600 mb-4">Visualização de PDF em desenvolvimento</p>
+                  <p className="text-gray-600 mb-4">{t('resources.pdfPreview') || 'Visualização de PDF em desenvolvimento'}</p>
                   <button
                     onClick={() => downloadResource(selectedResource)}
                     className="inline-flex items-center px-6 py-3 bg-purple-600 text-white font-medium rounded-lg hover:bg-purple-700 transition-colors"
                   >
                     <Download className="mr-2 h-5 w-5" />
-                    Baixar PDF
+                    {t('resources.download')}
                   </button>
                 </div>
               )}
@@ -280,7 +282,7 @@ export default function EnhancedResourcesSection() {
                       {quizSubmitted && question.explanation && (
                         <div className="mt-3 p-3 bg-blue-50 rounded-lg">
                           <p className="text-sm text-blue-800">
-                            <strong>Explicação:</strong> {question.explanation}
+                            <strong>{t('resources.explanation')}:</strong> {question.explanation}
                           </p>
                         </div>
                       )}
@@ -293,12 +295,12 @@ export default function EnhancedResourcesSection() {
                       disabled={Object.keys(quizAnswers).length !== selectedResource.questions.length}
                       className="w-full py-3 bg-purple-600 text-white font-medium rounded-lg hover:bg-purple-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                     >
-                      Enviar Respostas
+                      {t('resources.submitAnswers')}
                     </button>
                   ) : (
                     <div className="text-center p-6 bg-gray-50 rounded-lg">
                       <h4 className="text-lg font-bold text-gray-900 mb-2">
-                        Resultado: {quizScore}/{selectedResource.questions.length}
+                        {t('resources.result')}: {quizScore}/{selectedResource.questions.length}
                       </h4>
                       <p className="text-gray-600">
                         {quizScore === selectedResource.questions.length
