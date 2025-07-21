@@ -12,40 +12,73 @@ import ResourcesSection from './components/ResourcesSection';
 import CommunitySection from './components/CommunitySection';
 import SettingsSection from './components/SettingsSection';
 
-// Login/Auth Components (simulados para demonstração)
-const LoginPage = ({ onLogin }: { onLogin: (email: string, password?: string) => void }) => (
-  <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-    <div className="max-w-md w-full bg-white rounded-lg shadow-md p-8">
-      <h2 className="text-2xl font-bold text-center mb-6">Área de Membros - Teacher Poli</h2>
-      <button
-        onClick={() => onLogin('usuario@exemplo.com', 'senha123')}
-        className="w-full bg-purple-600 text-white py-3 rounded-lg hover:bg-purple-700 transition-colors"
-      >
-        Entrar (Demo)
-      </button>
-    </div>
-  </div>
-);
+// Auth Components
+import LoginPage from './components/LoginPage';
+import EmailVerificationPage from './components/EmailVerificationPage';
+import PasswordCreationPage from './components/PasswordCreationPage';
+
+type AuthStep = 'login' | 'verification' | 'password' | 'authenticated';
 
 export default function App() {
   const [user, setUser] = useLocalStorage<User | null>('teacherpoli_user', null);
   const [activeTab, setActiveTab] = useState('onboarding');
+  const [authStep, setAuthStep] = useState<AuthStep>('login');
+  const [currentEmail, setCurrentEmail] = useState('');
 
   const handleLogin = async (email: string, password?: string) => {
-    // Simular login
-    setUser({
+    // Simular login bem-sucedido
+    const userData: User = {
       name: email.split('@')[0],
       email,
       isVerified: true,
       hasPassword: true,
       hasGeneratedPlan: false,
       firstAccess: true
-    });
+    };
+    
+    setUser(userData);
+    setAuthStep('authenticated');
+  };
+
+  const handleNeedVerification = (email: string) => {
+    setCurrentEmail(email);
+    setAuthStep('verification');
+  };
+
+  const handleNeedPassword = (email: string) => {
+    setCurrentEmail(email);
+    setAuthStep('password');
+  };
+
+  const handleEmailVerified = () => {
+    setAuthStep('password');
+  };
+
+  const handlePasswordCreated = () => {
+    // Criar usuário após senha criada
+    const userData: User = {
+      name: currentEmail.split('@')[0],
+      email: currentEmail,
+      isVerified: true,
+      hasPassword: true,
+      hasGeneratedPlan: false,
+      firstAccess: true
+    };
+    
+    setUser(userData);
+    setAuthStep('authenticated');
+  };
+
+  const handleBackToLogin = () => {
+    setAuthStep('login');
+    setCurrentEmail('');
   };
 
   const handleLogout = () => {
     setUser(null);
     setActiveTab('onboarding');
+    setAuthStep('login');
+    setCurrentEmail('');
   };
 
   const handlePlanGenerated = () => {
@@ -69,8 +102,33 @@ export default function App() {
   };
 
   // Authentication flow
-  if (!user) {
-    return <LoginPage onLogin={handleLogin} />;
+  if (!user || authStep !== 'authenticated') {
+    switch (authStep) {
+      case 'verification':
+        return (
+          <EmailVerificationPage
+            email={currentEmail}
+            onVerified={handleEmailVerified}
+            onBack={handleBackToLogin}
+          />
+        );
+      case 'password':
+        return (
+          <PasswordCreationPage
+            email={currentEmail}
+            onPasswordCreated={handlePasswordCreated}
+            onBack={handleBackToLogin}
+          />
+        );
+      default:
+        return (
+          <LoginPage
+            onLogin={handleLogin}
+            onNeedVerification={handleNeedVerification}
+            onNeedPassword={handleNeedPassword}
+          />
+        );
+    }
   }
 
   // Main application
