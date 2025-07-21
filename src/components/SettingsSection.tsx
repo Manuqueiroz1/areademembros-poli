@@ -53,15 +53,15 @@ export default function SettingsSection() {
                   { value: 'light', label: t('settings.theme.light'), icon: Sun },
                   { value: 'dark', label: t('settings.theme.dark'), icon: Moon },
                   { value: 'system', label: t('settings.theme.system'), icon: Monitor }
-                ].map((theme) => {
-                  const Icon = theme.icon;
+                ].map((themeOption) => {
+                  const Icon = themeOption.icon;
                   return (
                     <button
-                      key={theme.value}
+                      key={themeOption.value}
                       onClick={() => setTheme(themeOption.value as any)}
                       className={`flex flex-col items-center p-4 rounded-lg border-2 transition-colors ${
                         theme === themeOption.value
-                          ? 'border-purple-500 bg-purple-50'
+                          ? 'border-purple-500 bg-purple-50 dark:bg-purple-900/20'
                           : 'border-gray-200 dark:border-gray-600 hover:border-gray-300 dark:hover:border-gray-500'
                       }`}
                     >
@@ -101,13 +101,13 @@ export default function SettingsSection() {
                   { value: 'pt', label: 'Português', flag: '🇧🇷' },
                   { value: 'es', label: 'Español', flag: '🇪🇸' },
                   { value: 'en', label: 'English', flag: '🇺🇸' }
-                ].map((language) => (
+                ].map((languageOption) => (
                   <button
-                    key={language.value}
+                    key={languageOption.value}
                     onClick={() => setLanguage(languageOption.value as any)}
                     className={`w-full flex items-center justify-between p-3 rounded-lg border-2 transition-colors ${
                       language === languageOption.value
-                        ? 'border-blue-500 bg-blue-50'
+                        ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20'
                         : 'border-gray-200 dark:border-gray-600 hover:border-gray-300 dark:hover:border-gray-500'
                     }`}
                   >
