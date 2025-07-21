@@ -8,61 +8,43 @@ import Navigation from './components/Navigation';
 import OnboardingSection from './components/OnboardingSection';
 import AIAssistantSection from './components/AIAssistantSection';
 import TeacherPoliSection from './components/TeacherPoliSection';
-import EnhancedResourcesSection from './components/EnhancedResourcesSection';
+import ResourcesSection from './components/ResourcesSection';
 import CommunitySection from './components/CommunitySection';
 import SettingsSection from './components/SettingsSection';
 
-// Login/Auth Components
-import LoginPage from './components/LoginPage';
-import EmailVerificationPage from './components/EmailVerificationPage';
-import PasswordCreationPage from './components/PasswordCreationPage';
+// Login/Auth Components (simulados para demonstração)
+const LoginPage = ({ onLogin }: { onLogin: (email: string, password?: string) => void }) => (
+  <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+    <div className="max-w-md w-full bg-white rounded-lg shadow-md p-8">
+      <h2 className="text-2xl font-bold text-center mb-6">Área de Membros - Teacher Poli</h2>
+      <button
+        onClick={() => onLogin('usuario@exemplo.com', 'senha123')}
+        className="w-full bg-purple-600 text-white py-3 rounded-lg hover:bg-purple-700 transition-colors"
+      >
+        Entrar (Demo)
+      </button>
+    </div>
+  </div>
+);
 
 export default function App() {
   const [user, setUser] = useLocalStorage<User | null>('teacherpoli_user', null);
   const [activeTab, setActiveTab] = useState('onboarding');
-  const [authStep, setAuthStep] = useState<'login' | 'verify' | 'password' | 'complete'>('login');
-  const [tempEmail, setTempEmail] = useState('');
 
-  // Mock functions for authentication flow
   const handleLogin = async (email: string, password?: string) => {
-    // Simulate login process
-    if (password) {
-      // Login with existing account
-      setUser({
-        name: email.split('@')[0],
-        email,
-        isVerified: true,
-        hasPassword: true,
-        hasGeneratedPlan: false,
-        firstAccess: false
-      });
-      setAuthStep('complete');
-    } else {
-      // New user flow
-      setTempEmail(email);
-      setAuthStep('verify');
-    }
-  };
-
-  const handleEmailVerification = () => {
-    setAuthStep('password');
-  };
-
-  const handlePasswordCreation = (password: string) => {
+    // Simular login
     setUser({
-      name: tempEmail.split('@')[0],
-      email: tempEmail,
+      name: email.split('@')[0],
+      email,
       isVerified: true,
       hasPassword: true,
       hasGeneratedPlan: false,
       firstAccess: true
     });
-    setAuthStep('complete');
   };
 
   const handleLogout = () => {
     setUser(null);
-    setAuthStep('login');
     setActiveTab('onboarding');
   };
 
@@ -87,17 +69,8 @@ export default function App() {
   };
 
   // Authentication flow
-  if (!user || authStep !== 'complete') {
-    switch (authStep) {
-      case 'login':
-        return <LoginPage onLogin={handleLogin} />;
-      case 'verify':
-        return <EmailVerificationPage email={tempEmail} onVerify={handleEmailVerification} />;
-      case 'password':
-        return <PasswordCreationPage onPasswordCreate={handlePasswordCreation} />;
-      default:
-        return <LoginPage onLogin={handleLogin} />;
-    }
+  if (!user) {
+    return <LoginPage onLogin={handleLogin} />;
   }
 
   // Main application
@@ -116,7 +89,7 @@ export default function App() {
           <AIAssistantSection onPlanGenerated={handlePlanGenerated} />
         )}
         {activeTab === 'teacher-poli' && <TeacherPoliSection />}
-        {activeTab === 'resources' && <EnhancedResourcesSection />}
+        {activeTab === 'resources' && <ResourcesSection />}
         {activeTab === 'community' && <CommunitySection />}
         {activeTab === 'settings' && <SettingsSection />}
       </main>
