@@ -22,7 +22,7 @@ export default function Header({ userName, onLogout }: HeaderProps) {
             />
             <div className="ml-2 sm:ml-4">
               <h1 className="text-sm sm:text-xl font-bold text-gray-900 dark:text-white leading-tight">
-                <span className="hidden sm:inline">{t('header.title')}</span>
+                <span className="hidden sm:inline">Área de Membros - Teacher Poli</span>
                 <span className="sm:hidden">Teacher Poli</span>
               </h1>
             </div>
@@ -41,7 +41,7 @@ export default function Header({ userName, onLogout }: HeaderProps) {
               className="flex items-center space-x-1 px-2 sm:px-3 py-2 text-xs sm:text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
             >
               <LogOut className="h-4 w-4" />
-              <span className="hidden sm:inline">{t('header.logout')}</span>
+              <span className="hidden sm:inline">Sair</span>
             </button>
           </div>
         </div>

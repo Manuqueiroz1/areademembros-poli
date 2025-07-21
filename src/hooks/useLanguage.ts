@@ -23,6 +23,18 @@ const translations: Translations = {
     en: 'Logout'
   },
   
+  // Header
+  'header.title': {
+    pt: 'Área de Membros - Teacher Poli',
+    es: 'Área de Miembros - Teacher Poli',
+    en: 'Members Area - Teacher Poli'
+  },
+  'header.logout': {
+    pt: 'Sair',
+    es: 'Salir',
+    en: 'Logout'
+  },
+  
   // Navigation
   'nav.onboarding': {
     pt: 'Comece por Aqui',
@@ -30,6 +42,30 @@ const translations: Translations = {
     en: 'Start Here'
   },
   'nav.ai-assistant': {
+    pt: 'Gere seu Plano de Estudos',
+    es: 'Genere su Plan de Estudios',
+    en: 'Generate Your Study Plan'
+  },
+  'nav.teacher-poli': {
+    pt: 'Teacher Poli',
+    es: 'Teacher Poli',
+    en: 'Teacher Poli'
+  },
+  'nav.resources': {
+    pt: 'Bônus',
+    es: 'Bonos',
+    en: 'Bonus'
+  },
+  'nav.community': {
+    pt: 'Comunidade',
+    es: 'Comunidad',
+    en: 'Community'
+  },
+  'nav.settings': {
+    pt: 'Configurações',
+    es: 'Configuraciones',
+    en: 'Settings'
+  },
     pt: 'Gere seu Plano de Estudos',
     es: 'Genere su Plan de Estudios',
     en: 'Generate Your Study Plan'
