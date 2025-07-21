@@ -79,47 +79,44 @@ export default function ResourcesSection() {
         <p className="text-sm sm:text-base text-gray-600">Materiais extras e conteúdos especiais para turbinar seus estudos</p>
       </div>
 
-      {/* Featured Resource - SEÇÃO CORRIGIDA */}
+      {/* Featured Resource */}
       <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl p-4 sm:p-8 mb-8 text-white">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-8 items-center">
           <div>
             <div className="inline-flex items-center px-3 py-1 bg-white/20 rounded-full text-xs sm:text-sm font-medium mb-4">
               <Star className="h-4 w-4 mr-1" />
-              {t('resources.featuredBonus')}
+              Bônus Especial
             </div>
             <h3 className="text-xl sm:text-2xl font-bold mb-4">
-              {t('resources.intensiveCourse')}
+              Curso Intensivo de 30 Dias
             </h3>
             <p className="text-purple-100 mb-6 text-sm sm:text-base">
-              {t('resources.intensiveDescription')}
+              Um programa completo para acelerar seu aprendizado de inglês
             </p>
-            {/* ✅ CORRIGIDO: Substituído <acesso> por <Play> */}
             <button className="inline-flex items-center px-4 sm:px-6 py-3 bg-white text-purple-600 text-sm sm:text-base font-semibold rounded-lg hover:bg-gray-100 transition-colors">
               <Play className="mr-2 h-4 w-4" />
-              <span className="hidden sm:inline">{t('resources.accessCourse')}</span>
-              <span className="sm:hidden">{t('resources.access')}</span>
+              <span className="hidden sm:inline">Acessar Curso</span>
+              <span className="sm:hidden">Acessar</span>
             </button>
           </div>
           
           <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 sm:p-6">
-            {/* ✅ CORRIGIDO: Grid com 4 itens para melhor balanceamento */}
             <div className="grid grid-cols-2 gap-3 sm:gap-4 text-center">
               <div>
                 <div className="text-lg sm:text-2xl font-bold">30 dias</div>
-                <div className="text-purple-200 text-xs sm:text-sm">{t('resources.daysOfActivities')}</div>
+                <div className="text-purple-200 text-xs sm:text-sm">de atividades</div>
               </div>
               <div>
                 <div className="text-lg sm:text-2xl font-bold">+ de 30h</div>
-                {/* ✅ CORRIGIDO: Tag de fechamento malformada */}
-                <div className="text-purple-200 text-xs sm:text-sm">{t('resources.classes')}</div>
+                <div className="text-purple-200 text-xs sm:text-sm">de aulas</div>
               </div>
               <div>
                 <div className="text-lg sm:text-2xl font-bold">300+</div>
-                <div className="text-purple-200 text-xs sm:text-sm">{t('resources.exercises')}</div>
+                <div className="text-purple-200 text-xs sm:text-sm">exercícios</div>
               </div>
               <div>
                 <div className="text-lg sm:text-2xl font-bold">100%</div>
-                <div className="text-purple-200 text-xs sm:text-sm">{t('resources.free')}</div>
+                <div className="text-purple-200 text-xs sm:text-sm">gratuito</div>
               </div>
             </div>
           </div>
@@ -167,30 +164,30 @@ export default function ResourcesSection() {
 
       {/* Study Tips */}
       <div className="mt-8 sm:mt-12 bg-white rounded-lg shadow-sm border border-gray-200 p-4 sm:p-8">
-        <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6">{t('resources.studyTips')}</h3>
+        <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6">Dicas de Estudo</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           <div className="text-center">
             <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
               <span className="text-xl">📚</span>
             </div>
-            <h4 className="text-sm sm:text-base font-semibold text-gray-900 mb-2">{t('resources.studyDaily')}</h4>
-            <p className="text-gray-600 text-xs sm:text-sm">{t('resources.studyDailyDesc')}</p>
+            <h4 className="text-sm sm:text-base font-semibold text-gray-900 mb-2">Estude Diariamente</h4>
+            <p className="text-gray-600 text-xs sm:text-sm">Dedique pelo menos 30 minutos por dia aos estudos</p>
           </div>
           
           <div className="text-center">
             <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
               <span className="text-xl">🎧</span>
             </div>
-            <h4 className="text-sm sm:text-base font-semibold text-gray-900 mb-2">{t('resources.practiceListening')}</h4>
-            <p className="text-gray-600 text-xs sm:text-sm">{t('resources.practiceListeningDesc')}</p>
+            <h4 className="text-sm sm:text-base font-semibold text-gray-900 mb-2">Pratique a Escuta</h4>
+            <p className="text-gray-600 text-xs sm:text-sm">Ouça podcasts e músicas em inglês regularmente</p>
           </div>
           
           <div className="text-center">
             <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
               <span className="text-xl">💬</span>
             </div>
-            <h4 className="text-sm sm:text-base font-semibold text-gray-900 mb-2">{t('resources.practiceConversation')}</h4>
-            <p className="text-gray-600 text-xs sm:text-sm">{t('resources.practiceConversationDesc')}</p>
+            <h4 className="text-sm sm:text-base font-semibold text-gray-900 mb-2">Pratique Conversação</h4>
+            <p className="text-gray-600 text-xs sm:text-sm">Converse com outros estudantes na comunidade</p>
           </div>
         </div>
       </div>
