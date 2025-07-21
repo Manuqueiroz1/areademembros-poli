@@ -8,7 +8,11 @@ interface Message {
   timestamp: Date;
 }
 
-export default function AIAssistantSection() {
+interface AIAssistantSectionProps {
+  onPlanGenerated?: () => void;
+}
+
+export default function AIAssistantSection({ onPlanGenerated }: AIAssistantSectionProps) {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
@@ -74,6 +78,11 @@ export default function AIAssistantSection() {
         dailyTime: '45 minutos',
         generatedAt: new Date()
       });
+      
+      // Notify parent component that plan was generated
+      if (onPlanGenerated) {
+        onPlanGenerated();
+      }
       
       setIsLoading(false);
     }, 2000);
