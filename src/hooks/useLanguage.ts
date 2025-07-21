@@ -66,6 +66,7 @@ const translations: Translations = {
     es: 'Configuraciones',
     en: 'Settings'
   },
+  'nav.ai-assistant': {
     pt: 'Gere seu Plano de Estudos',
     es: 'Genere su Plan de Estudios',
     en: 'Generate Your Study Plan'
