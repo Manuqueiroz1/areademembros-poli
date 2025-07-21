@@ -41,12 +41,12 @@ const translations: Translations = {
     es: 'Empiece por Aquí',
     en: 'Start Here'
   },
-  'nav.aiAssistant': {
+  'nav.ai-assistant': {
     pt: 'Gere seu Plano de Estudos',
     es: 'Genere su Plan de Estudios',
     en: 'Generate Your Study Plan'
   },
-  'nav.teacherPoli': {
+  'nav.teacher-poli': {
     pt: 'Teacher Poli',
     es: 'Teacher Poli',
     en: 'Teacher Poli'
