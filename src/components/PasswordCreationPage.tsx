@@ -1,266 +1,321 @@
 import React, { useState } from 'react';
-import { Eye, EyeOff, Lock, CheckCircle, AlertCircle, Loader } from 'lucide-react';
-import { useLanguage } from '../hooks/useLanguage';
+import { Resource, QuizQuestion } from '../types';
 
-interface PasswordCreationPageProps {
-  email: string;
-  onPasswordCreated: (email: string, password: string) => void;
-}
+const sampleResources: Resource[] = [
+  {
+    id: '1',
+    title: 'Maximizando seu Aprendizado com a Teacher Poli',
+    description: 'Ebook Completo Explicando Todas as Funcionalidades da Teacher Poli',
+    type: 'pdf',
+    pdfUrl: '/sample.pdf',
+    size: '2.5 MB',
+    rating: 4.8,
+    downloads: 1250
+  },
+  {
+    id: '2',
+    title: 'Curso Stress in Pronunciation',
+    description: 'Conteúdo complementar para aprofundar seus estudos e aprender como os nativos realmente falam',
+    type: 'video',
+    videoUrl: 'https://www.youtube.com/embed/mttHTuEK5Xs',
+    size: '1.2 GB',
+    rating: 4.9,
+    downloads: 890
+  },
+  {
+    id: '3',
+    title: 'Quiz: Teste seus Conhecimentos',
+    description: 'Avalie seu progresso com questões sobre gramática e vocabulário',
+    type: 'quiz',
+    questions: [
+      {
+        id: '1',
+        question: 'Qual é a forma correta do verbo "to be" na terceira pessoa do singular?',
+        options: ['am', 'is', 'are', 'be'],
+        correctAnswer: 1,
+        explanation: '"Is" é a forma correta do verbo "to be" para he, she, it.'
+      },
+      {
+        id: '2',
+        question: 'Como se diz "obrigado" em inglês?',
+        options: ['Please', 'Sorry', 'Thank you', 'Excuse me'],
+        correctAnswer: 2,
+        explanation: '"Thank you" é a forma mais comum de agradecer em inglês.'
+      }
+    ],
+    rating: 4.7,
+    downloads: 650
+  }
+];
 
-export default function PasswordCreationPage({ email, onPasswordCreated }: PasswordCreationPageProps) {
-  const { t } = useLanguage();
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [errors, setErrors] = useState<string[]>([]);
+  const [selectedResource, setSelectedResource] = useState<Resource | null>(null);
+  const [showModal, setShowModal] = useState(false);
+  const [quizAnswers, setQuizAnswers] = useState<{ [key: string]: number }>({});
+  const [quizSubmitted, setQuizSubmitted] = useState(false);
+  const [quizScore, setQuizScore] = useState(0);
 
-  const validatePassword = (pwd: string): string[] => {
-    const errors: string[] = [];
+  const getIcon = (type: string) => {
+    switch (type) {
+      case 'pdf':
+        return FileText;
+      case 'video':
+        return Video;
+      case 'quiz':
+        return HelpCircle;
+      default:
+        return FileText;
+    }
+  };
+
+  const getTypeColor = (type: string) => {
+    switch (type) {
+      case 'pdf':
+        return 'bg-red-100 text-red-600';
+      case 'video':
+        return 'bg-blue-100 text-blue-600';
+      case 'quiz':
+        return 'bg-green-100 text-green-600';
+      default:
+        return 'bg-gray-100 text-gray-600';
+    }
+  };
+
+  const handleResourceClick = (resource: Resource) => {
+    setSelectedResource(resource);
+    setShowModal(true);
+                  <p className="text-gray-600 mb-4">Visualização de PDF em desenvolvimento</p>
+    if (resource.type === 'quiz') {
+      setQuizAnswers({});
+      setQuizSubmitted(false);
+      setQuizScore(0);
+    }
+  };
+
+  const handleQuizAnswer = (questionId: string, answerIndex: number) => {
+    setQuizAnswers(prev => ({
+      ...prev,
+      [questionId]: answerIndex
+    }));
+  };
+
+  const submitQuiz = () => {
+    if (!selectedResource?.questions) return;
     
-    if (pwd.length < 8) {
-      errors.push('A senha deve ter pelo menos 8 caracteres');
-    }
-    if (!/[A-Z]/.test(pwd)) {
-      errors.push('A senha deve conter pelo menos uma letra maiúscula');
-    }
-    if (!/[a-z]/.test(pwd)) {
-      errors.push('A senha deve conter pelo menos uma letra minúscula');
-    }
-    if (!/[0-9]/.test(pwd)) {
-      errors.push('A senha deve conter pelo menos um número');
-    }
-    if (!/[!@#$%^&*(),.?":{}|<>]/.test(pwd)) {
-      errors.push('A senha deve conter pelo menos um caractere especial');
-    }
+    let correct = 0;
+    selectedResource.questions.forEach(question => {
+      if (quizAnswers[question.id] === question.correctAnswer) {
+        correct++;
+      }
+    });
     
-    return errors;
+    setQuizScore(correct);
+    setQuizSubmitted(true);
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setErrors([]);
-    setIsLoading(true);
-
-    // Validate password
-    const passwordErrors = validatePassword(password);
-    if (passwordErrors.length > 0) {
-      setErrors(passwordErrors);
-      setIsLoading(false);
-      return;
-    }
-
-    // Check if passwords match
-    if (password !== confirmPassword) {
-      setErrors(['As senhas não coincidem']);
-      setIsLoading(false);
-      return;
-    }
-
-    try {
-      // Simulate API call to save password
-      // In a real implementation, you would hash the password and save it
-      setTimeout(() => {
-        onPasswordCreated(email, password);
-        setIsLoading(false);
-      }, 1500);
-    } catch (error) {
-      setErrors(['Erro ao criar senha. Tente novamente.']);
-      setIsLoading(false);
-    }
+  const downloadResource = (resource: Resource) => {
+    // Simulate download
+    const element = document.createElement('a');
+    const file = new Blob([`Conteúdo do recurso: ${resource.title}`], { type: 'text/plain' });
+    element.href = URL.createObjectURL(file);
+    element.download = `${resource.title.replace(/\s+/g, '-').toLowerCase()}.pdf`;
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
   };
-
-  const getPasswordStrength = (pwd: string) => {
-    const errors = validatePassword(pwd);
-    if (pwd.length === 0) return { strength: 0, label: '', color: '' };
-    if (errors.length === 0) return { strength: 100, label: 'Forte', color: 'bg-green-500' };
-    if (errors.length <= 2) return { strength: 75, label: 'Boa', color: 'bg-yellow-500' };
-    if (errors.length <= 3) return { strength: 50, label: 'Média', color: 'bg-orange-500' };
-    return { strength: 25, label: 'Fraca', color: 'bg-red-500' };
-  };
-
-  const passwordStrength = getPasswordStrength(password);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-600 via-purple-700 to-pink-600 flex items-center justify-center p-4 sm:p-6">
-      <div className="max-w-md w-full">
-        {/* Logo */}
-        <div className="text-center mb-6 sm:mb-8">
-          <img 
-            src="/WhatsApp Image 2025-06-02 at 10.53.02.jpeg" 
-            alt="Teacher Poli" 
-            className="h-12 sm:h-16 w-auto mx-auto mb-4"
-          />
-          <h1 className="text-xl sm:text-3xl font-bold text-white mb-2 leading-tight">{t('password.createTitle')}</h1>
-          <p className="text-purple-100 text-sm sm:text-base">{t('password.verified')}</p>
-        </div>
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
+      <div className="mb-8">
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">{t('resources.title')}</h2>
+        <p className="text-sm sm:text-base text-gray-600">{t('resources.subtitle')}</p>
+      </div>
 
-        {/* Password Creation Form */}
-        <div className="bg-white rounded-2xl shadow-2xl p-6 sm:p-8">
-          <div className="text-center mb-6">
-            <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <CheckCircle className="h-8 w-8 text-green-600" />
-            </div>
-            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">{t('password.emailVerified')}</h2>
-            <p className="text-gray-600 text-sm">
-              <strong>{email}</strong>
-            </p>
-            <p className="text-gray-500 text-xs mt-1">{t('password.createSecure')}</p>
-          </div>
-
-          <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Password Field */}
-            <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">{t('password.newPassword')}</label>
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Lock className="h-4 w-4 sm:h-5 sm:w-5 text-gray-400" />
+      {/* Resources Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+        {sampleResources.map((resource) => {
+          const Icon = getIcon(resource.type);
+          return (
+            <div key={resource.id} className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 sm:p-6 hover:shadow-md transition-shadow">
+              <div className="flex items-start justify-between mb-4">
+                <div className={`p-3 rounded-lg ${getTypeColor(resource.type)}`}>
+                  <Icon className="h-5 w-5 sm:h-6 sm:w-6" />
                 </div>
-                <input
-                  id="password"
-                  type={showPassword ? 'text' : 'password'}
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="block w-full pl-9 sm:pl-10 pr-10 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent text-sm sm:text-base"
-                  placeholder="Digite sua nova senha"
-                  required
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="absolute inset-y-0 right-0 pr-3 flex items-center"
-                >
-                  {showPassword ? (
-                    <EyeOff className="h-4 w-4 sm:h-5 sm:w-5 text-gray-400 hover:text-gray-600" />
-                  ) : (
-                    <Eye className="h-4 w-4 sm:h-5 sm:w-5 text-gray-400 hover:text-gray-600" />
-                  )}
-                </button>
+                <span className={`px-2 py-1 text-xs font-medium rounded-full ${getTypeColor(resource.type)}`}>
+                  {resource.type.toUpperCase()}
+                </span>
               </div>
               
-              {/* Password Strength Indicator */}
-              {password && (
-                <div className="mt-2">
-                  <div className="flex items-center justify-between text-xs mb-1">
-                  <span className="text-gray-500">{t('password.strength')}</span>
-                    <span className={`font-medium ${
-                      passwordStrength.strength >= 75 ? 'text-green-600' :
-                      passwordStrength.strength >= 50 ? 'text-yellow-600' :
-                      passwordStrength.strength >= 25 ? 'text-orange-600' : 'text-red-600'
-                    }`}>
-                      {passwordStrength.label}
+              <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-2 line-clamp-2">{resource.title}</h3>
+              <p className="text-gray-600 text-xs sm:text-sm mb-4 line-clamp-3">{resource.description}</p>
+              
+              <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
+                {resource.size && <span className="text-xs sm:text-sm">{resource.size}</span>}
+                {resource.rating && (
+                  <div className="flex items-center">
+                    <span className="text-yellow-400">★</span>
+                    <span className="text-xs sm:text-sm ml-1">{resource.rating}</span>
+                  </div>
+                )}
+              </div>
+              
+              <div className="flex items-center justify-between">
+                {resource.downloads && (
+                  <span className="text-xs sm:text-sm text-gray-500">{resource.downloads} acessos</span>
+                )}
+                <div className="flex space-x-2">
+                  <button
+                    onClick={() => handleResourceClick(resource)}
+                    className="inline-flex items-center px-3 sm:px-4 py-2 bg-purple-600 text-white text-xs sm:text-sm font-medium rounded-lg hover:bg-purple-700 transition-colors"
+                  >
+                    {resource.type === 'video' ? <Play className="mr-1 h-4 w-4" /> : 
+                     resource.type === 'quiz' ? <HelpCircle className="mr-1 h-4 w-4" /> :
+                     <Eye className="mr-1 h-4 w-4" />}
+                    <span className="hidden sm:inline">
+                      {resource.type === 'video' ? t('resources.watch') : 
+                       resource.type === 'quiz' ? t('resources.takeQuiz') : t('resources.view')}
                     </span>
-                  </div>
-                  <div className="w-full bg-gray-200 rounded-full h-2">
-                    <div 
-                      className={`h-2 rounded-full transition-all duration-300 ${passwordStrength.color}`}
-                      style={{ width: `${passwordStrength.strength}%` }}
-                    ></div>
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {/* Confirm Password Field */}
-            <div>
-              <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 mb-2">{t('password.confirmPassword')}</label>
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Lock className="h-4 w-4 sm:h-5 sm:w-5 text-gray-400" />
-                </div>
-                <input
-                  id="confirmPassword"
-                  type={showConfirmPassword ? 'text' : 'password'}
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                  className="block w-full pl-9 sm:pl-10 pr-10 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent text-sm sm:text-base"
-                  placeholder="Confirme sua senha"
-                  required
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                  className="absolute inset-y-0 right-0 pr-3 flex items-center"
-                >
-                  {showConfirmPassword ? (
-                    <EyeOff className="h-4 w-4 sm:h-5 sm:w-5 text-gray-400 hover:text-gray-600" />
-                  ) : (
-                    <Eye className="h-4 w-4 sm:h-5 sm:w-5 text-gray-400 hover:text-gray-600" />
+                    <span className="sm:hidden">
+                      {resource.type === 'video' ? '▶' : 
+                       resource.type === 'quiz' ? '?' : '👁'}
+                    </span>
+                  </button>
+                  {resource.type === 'pdf' && (
+                    <button
+                      onClick={() => downloadResource(resource)}
+                      className="inline-flex items-center px-3 py-2 bg-gray-600 text-white text-xs sm:text-sm font-medium rounded-lg hover:bg-gray-700 transition-colors"
+                    >
+                      <Download className="h-4 w-4" />
+                    </button>
                   )}
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Modal */}
+      {showModal && selectedResource && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="p-6">
+              <div className="flex items-center justify-between mb-4">
+                <p className="text-gray-600 mb-4">{t('resources.pdfPreview')}</p>
+                <button
+                  onClick={() => setShowModal(false)}
+                  className="text-gray-400 hover:text-gray-600"
+                >
+                  <X className="h-6 w-6" />
                 </button>
               </div>
-            </div>
 
-            {/* Password Requirements */}
-            <div className="bg-gray-50 rounded-lg p-4">
-              <h4 className="text-sm font-medium text-gray-700 mb-2">{t('password.requirements')}</h4>
-              <ul className="text-xs text-gray-600 space-y-1">
-                <li className={`flex items-center ${password.length >= 8 ? 'text-green-600' : ''}`}>
-                  <span className="mr-2">{password.length >= 8 ? '✓' : '•'}</span>
-                  Pelo menos 8 caracteres
-                </li>
-                <li className={`flex items-center ${/[A-Z]/.test(password) ? 'text-green-600' : ''}`}>
-                  <span className="mr-2">{/[A-Z]/.test(password) ? '✓' : '•'}</span>
-                  Uma letra maiúscula
-                </li>
-                <li className={`flex items-center ${/[a-z]/.test(password) ? 'text-green-600' : ''}`}>
-                  <span className="mr-2">{/[a-z]/.test(password) ? '✓' : '•'}</span>
-                  Uma letra minúscula
-                </li>
-                <li className={`flex items-center ${/[0-9]/.test(password) ? 'text-green-600' : ''}`}>
-                  <span className="mr-2">{/[0-9]/.test(password) ? '✓' : '•'}</span>
-                  Um número
-                </li>
-                <li className={`flex items-center ${/[!@#$%^&*(),.?":{}|<>]/.test(password) ? 'text-green-600' : ''}`}>
-                  <span className="mr-2">{/[!@#$%^&*(),.?":{}|<>]/.test(password) ? '✓' : '•'}</span>
-                  Um caractere especial
-                </li>
-              </ul>
-            </div>
-
-            {/* Error Messages */}
-            {errors.length > 0 && (
-              <div className="bg-red-50 border border-red-200 rounded-lg p-3">
-                <div className="flex items-start space-x-2">
-                  <AlertCircle className="h-5 w-5 text-red-500 flex-shrink-0 mt-0.5" />
-                    <div>
-                    {errors.map((error, index) => (
-                      <p key={index} className="text-red-600 text-sm">{error}</p>
-                    ))}
-                  </div>
-                  </div>
-              </div>
-            )}
-
-            {/* Create Password Button */}
-            <button
-              type="submit"
-              disabled={isLoading || !password || !confirmPassword}
-              className="w-full flex items-center justify-center px-4 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white text-sm sm:text-base font-semibold rounded-lg hover:from-purple-700 hover:to-pink-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
-            >
-              {isLoading ? (
-                <>
-                  <Loader className="mr-2 h-5 w-5 animate-spin" />
-                  Criando senha...
-                </>
-              ) : (
-                <>
-                  <Lock className="mr-2 h-5 w-5" />
-                  Criar Senha e Continuar
-                </>
+              {/* Video Content */}
+              {selectedResource.type === 'video' && selectedResource.videoUrl && (
+                <div className="aspect-video mb-4">
+                  <iframe
+                    src={selectedResource.videoUrl}
+                    title={selectedResource.title}
+                    className="w-full h-full rounded-lg"
+                    allowFullScreen
+                  />
+                </div>
               )}
-            </button>
-          </form>
-        </div>
 
-        {/* Footer */}
-        <div className="text-center mt-6 sm:mt-8">
-          <p className="text-purple-100 text-xs sm:text-sm">
-            {t('common.copyright')}
-          </p>
+              {/* PDF Content */}
+              {selectedResource.type === 'pdf' && (
+                <div className="text-center py-12">
+                  <FileText className="h-16 w-16 text-gray-400 mx-auto mb-4" />
+                  <p className="text-gray-600 mb-4">{t('resources.pdfPreview') || 'Visualização de PDF em desenvolvimento'}</p>
+                  <button
+                    onClick={() => downloadResource(selectedResource)}
+                    className="inline-flex items-center px-6 py-3 bg-purple-600 text-white font-medium rounded-lg hover:bg-purple-700 transition-colors"
+                  >
+                    <Download className="mr-2 h-5 w-5" />
+                    Baixar PDF
+                  </button>
+                </div>
+              )}
+
+              {/* Quiz Content */}
+              {selectedResource.type === 'quiz' && selectedResource.questions && (
+                <div className="space-y-6">
+                  {selectedResource.questions.map((question, index) => (
+                    <div key={question.id} className="border border-gray-200 rounded-lg p-4">
+                      <h4 className="font-semibold text-gray-900 mb-3">
+                        {index + 1}. {question.question}
+                      </h4>
+                      <div className="space-y-2">
+                        {question.options.map((option, optionIndex) => (
+                          <label
+                            key={optionIndex}
+                            className={`flex items-center p-3 rounded-lg border cursor-pointer transition-colors ${
+                              quizSubmitted
+                                ? optionIndex === question.correctAnswer
+                                  ? 'border-green-500 bg-green-50'
+                                  : quizAnswers[question.id] === optionIndex && optionIndex !== question.correctAnswer
+                                  ? 'border-red-500 bg-red-50'
+                                  : 'border-gray-200'
+                                : quizAnswers[question.id] === optionIndex
+                                ? 'border-purple-500 bg-purple-50'
+                                : 'border-gray-200 hover:border-gray-300'
+                            }`}
+                          >
+                            <input
+                              type="radio"
+                              name={`question-${question.id}`}
+                              value={optionIndex}
+                              checked={quizAnswers[question.id] === optionIndex}
+                              onChange={() => handleQuizAnswer(question.id, optionIndex)}
+                              disabled={quizSubmitted}
+                              className="mr-3"
+                            />
+                            <span className="text-sm">{option}</span>
+                            {quizSubmitted && optionIndex === question.correctAnswer && (
+                              <CheckCircle className="ml-auto h-5 w-5 text-green-500" />
+                            )}
+                          </label>
+                        ))}
+                      </div>
+                      {quizSubmitted && question.explanation && (
+                        <div className="mt-3 p-3 bg-blue-50 rounded-lg">
+                          <p className="text-sm text-blue-800">
+                            <strong>Explicação:</strong> {question.explanation}
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+
+                  {!quizSubmitted ? (
+                    <button
+                      onClick={submitQuiz}
+                      disabled={Object.keys(quizAnswers).length !== selectedResource.questions.length}
+                      className="w-full py-3 bg-purple-600 text-white font-medium rounded-lg hover:bg-purple-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                    >
+                      Enviar Respostas
+                    </button>
+                  ) : (
+                    <div className="text-center p-6 bg-gray-50 rounded-lg">
+                      <h4 className="text-lg font-bold text-gray-900 mb-2">
+                        Resultado: {quizScore}/{selectedResource.questions.length}
+                      </h4>
+                      <p className="text-gray-600">
+                        {quizScore === selectedResource.questions.length
+                          ? '🎉 Parabéns! Você acertou todas!'
+                          : quizScore >= selectedResource.questions.length / 2
+                          ? '👍 Bom trabalho! Continue praticando!'
+                          : '📚 Continue estudando e tente novamente!'}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              <p className="text-gray-600 text-sm mt-4">{selectedResource.description}</p>
+            © 2024 Teacher Poli. Todos os direitos reservados.
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

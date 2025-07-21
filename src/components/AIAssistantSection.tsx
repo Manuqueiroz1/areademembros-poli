@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Brain, Send, User, Bot, Sparkles, BookOpen, Target, Clock, Download, FileText } from 'lucide-react';
-import { useLanguage } from '../hooks/useLanguage';
 
 interface Message {
   id: string;
@@ -14,12 +13,11 @@ interface AIAssistantSectionProps {
 }
 
 export default function AIAssistantSection({ onPlanGenerated }: AIAssistantSectionProps) {
-  const { t } = useLanguage();
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
       type: 'assistant',
-      content: t('ai.welcomeMessage') || 'Olá! Sou sua assistente de IA da Teacher Poli. Estou aqui para ajudar você a criar um plano de estudos personalizado. Para começar, me conte sobre seus objetivos de aprendizado e seu nível atual.',
+      content: 'Olá! Sou sua assistente de IA da Teacher Poli. Estou aqui para ajudar você a criar um plano de estudos personalizado. Para começar, me conte sobre seus objetivos de aprendizado e seu nível atual.',
       timestamp: new Date()
     }
   ]);
@@ -29,21 +27,21 @@ export default function AIAssistantSection({ onPlanGenerated }: AIAssistantSecti
 
   const studyPlanTemplates = [
     {
-      title: t('ai.basicEnglish') || 'Inglês Básico',
-      description: t('ai.basicEnglishDesc') || 'Plano para iniciantes em inglês',
-      duration: t('ai.30days') || '30 dias',
+      title: 'Inglês Básico',
+      description: 'Plano para iniciantes em inglês',
+      duration: '30 dias',
       icon: BookOpen
     },
     {
-      title: t('ai.intermediateEnglish') || 'Inglês Intermediário',
-      description: t('ai.intermediateEnglishDesc') || 'Aperfeiçoe suas habilidades',
-      duration: t('ai.30days') || '30 dias',
+      title: 'Inglês Intermediário',
+      description: 'Aperfeiçoe suas habilidades',
+      duration: '30 dias',
       icon: Target
     },
     {
-      title: t('ai.advancedEnglish') || 'Inglês Avançado',
-      description: t('ai.advancedEnglishDesc') || 'Fluência e proficiência',
-      duration: t('ai.30days') || '30 dias',
+      title: 'Inglês Avançado',
+      description: 'Fluência e proficiência',
+      duration: '30 dias',
       icon: Sparkles
     }
   ];
@@ -67,17 +65,17 @@ export default function AIAssistantSection({ onPlanGenerated }: AIAssistantSecti
       const aiResponse: Message = {
         id: (Date.now() + 1).toString(),
         type: 'assistant',
-        content: t('ai.planGenerated'),
+        content: 'Perfeito! Com base nas suas informações, criei um plano de estudos personalizado para você. Você pode baixá-lo no painel ao lado.',
         timestamp: new Date()
       };
       setMessages(prev => [...prev, aiResponse]);
       
       // Simulate plan generation
       setGeneratedPlan({
-        title: t('ai.planTitle'),
-        level: t('ai.intermediate'),
-        objective: t('ai.fluentConversation'),
-        dailyTime: `45 ${t('ai.minutes')}`,
+        title: 'Plano de Estudos Personalizado',
+        level: 'Intermediário',
+        objective: 'Conversação fluente',
+        dailyTime: '45 minutos',
         generatedAt: new Date()
       });
       
@@ -109,8 +107,8 @@ export default function AIAssistantSection({ onPlanGenerated }: AIAssistantSecti
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
       <div className="mb-8">
-        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">{t('ai.title')}</h2>
-        <p className="text-sm sm:text-base text-gray-600">{t('ai.subtitle')}</p>
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Assistente de IA</h2>
+        <p className="text-sm sm:text-base text-gray-600">Crie seu plano de estudos personalizado com inteligência artificial</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 sm:gap-8">
@@ -118,7 +116,7 @@ export default function AIAssistantSection({ onPlanGenerated }: AIAssistantSecti
         <div className="lg:col-span-1 order-2 lg:order-1">
           <div className="space-y-6">
             <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-            <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-4">{t('ai.quickTemplates')}</h3>
+            <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-4">Templates Rápidos</h3>
             <div className="space-y-3">
               {studyPlanTemplates.map((template, index) => {
                 const Icon = template.icon;
@@ -148,13 +146,13 @@ export default function AIAssistantSection({ onPlanGenerated }: AIAssistantSecti
           {/* Generated Plan Download */}
           {generatedPlan && (
             <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 sm:p-6">
-              <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-4">{t('ai.generatedPlan')}</h3>
+              <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-4">Plano Gerado</h3>
               <div className="bg-purple-50 rounded-lg p-4 mb-4">
                 <h4 className="text-sm sm:text-base font-medium text-purple-900 mb-2">{generatedPlan.title}</h4>
                 <div className="text-sm text-purple-700 space-y-1">
-                  <p>{t('ai.level')}: {generatedPlan.level}</p>
-                  <p>{t('ai.objective')}: {generatedPlan.objective}</p>
-                  <p>{t('ai.dailyTime')}: {generatedPlan.dailyTime}</p>
+                  <p>Nível: {generatedPlan.level}</p>
+                  <p>Objetivo: {generatedPlan.objective}</p>
+                  <p>Tempo diário: {generatedPlan.dailyTime}</p>
                 </div>
               </div>
               <button
@@ -162,10 +160,10 @@ export default function AIAssistantSection({ onPlanGenerated }: AIAssistantSecti
                 className="w-full flex items-center justify-center px-4 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white text-sm sm:text-base font-semibold rounded-lg hover:from-purple-700 hover:to-pink-700 transition-all"
               >
                 <Download className="mr-2 h-4 w-4" />
-                <span className="hidden sm:inline">{t('ai.downloadPlan')}</span>
-                <span className="sm:hidden">{t('ai.downloadPlanShort')}</span>
+                <span className="hidden sm:inline">Baixar Plano Completo</span>
+                <span className="sm:hidden">Baixar</span>
               </button>
-              <p className="text-xs text-gray-500 mt-2 text-center">{t('ai.validFor30Days')}</p>
+              <p className="text-xs text-gray-500 mt-2 text-center">Válido por 30 dias</p>
             </div>
           )}
           </div>
@@ -180,8 +178,8 @@ export default function AIAssistantSection({ onPlanGenerated }: AIAssistantSecti
                 <Brain className="h-5 w-5 text-purple-600" />
               </div>
               <div>
-                <h3 className="text-sm sm:text-base font-semibold text-gray-900">{t('ai.assistant')}</h3>
-                <p className="text-xs sm:text-sm text-gray-500">{t('ai.specialist')}</p>
+                <h3 className="text-sm sm:text-base font-semibold text-gray-900">Assistente IA</h3>
+                <p className="text-xs sm:text-sm text-gray-500">Especialista em ensino de inglês</p>
               </div>
             </div>
 
@@ -242,7 +240,7 @@ export default function AIAssistantSection({ onPlanGenerated }: AIAssistantSecti
                   value={inputMessage}
                   onChange={(e) => setInputMessage(e.target.value)}
                   onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
-                  placeholder={t('ai.placeholder')}
+                  placeholder="Digite sua mensagem..."
                   className="flex-1 border border-gray-300 rounded-lg px-3 sm:px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
                 />
                 <button

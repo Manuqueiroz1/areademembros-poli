@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Download, FileText, Video, HelpCircle, Play, CheckCircle, X, Eye } from 'lucide-react';
 import { Resource, QuizQuestion } from '../types';
-import { useLanguage } from '../hooks/useLanguage';
 
 const sampleResources: Resource[] = [
   {
@@ -51,7 +50,6 @@ const sampleResources: Resource[] = [
 ];
 
 export default function EnhancedResourcesSection() {
-  const { t } = useLanguage();
   const [selectedResource, setSelectedResource] = useState<Resource | null>(null);
   const [showModal, setShowModal] = useState(false);
   const [quizAnswers, setQuizAnswers] = useState<{ [key: string]: number }>({});
@@ -87,6 +85,7 @@ export default function EnhancedResourcesSection() {
   const handleResourceClick = (resource: Resource) => {
     setSelectedResource(resource);
     setShowModal(true);
+                  <p className="text-gray-600 mb-4">Visualização de PDF em desenvolvimento</p>
     if (resource.type === 'quiz') {
       setQuizAnswers({});
       setQuizSubmitted(false);
@@ -234,7 +233,7 @@ export default function EnhancedResourcesSection() {
                     className="inline-flex items-center px-6 py-3 bg-purple-600 text-white font-medium rounded-lg hover:bg-purple-700 transition-colors"
                   >
                     <Download className="mr-2 h-5 w-5" />
-                    {t('resources.download')}
+                    Baixar PDF
                   </button>
                 </div>
               )}
@@ -282,7 +281,7 @@ export default function EnhancedResourcesSection() {
                       {quizSubmitted && question.explanation && (
                         <div className="mt-3 p-3 bg-blue-50 rounded-lg">
                           <p className="text-sm text-blue-800">
-                            <strong>{t('resources.explanation')}:</strong> {question.explanation}
+                            <strong>Explicação:</strong> {question.explanation}
                           </p>
                         </div>
                       )}
@@ -295,19 +294,19 @@ export default function EnhancedResourcesSection() {
                       disabled={Object.keys(quizAnswers).length !== selectedResource.questions.length}
                       className="w-full py-3 bg-purple-600 text-white font-medium rounded-lg hover:bg-purple-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                     >
-                      {t('resources.submitAnswers')}
+                      Enviar Respostas
                     </button>
                   ) : (
                     <div className="text-center p-6 bg-gray-50 rounded-lg">
                       <h4 className="text-lg font-bold text-gray-900 mb-2">
-                        {t('resources.result')}: {quizScore}/{selectedResource.questions.length}
+                        Resultado: {quizScore}/{selectedResource.questions.length}
                       </h4>
                       <p className="text-gray-600">
                         {quizScore === selectedResource.questions.length
-                          ? `🎉 ${t('resources.quizResult')}`
+                          ? '🎉 Parabéns! Você acertou todas!'
                           : quizScore >= selectedResource.questions.length / 2
-                          ? `👍 ${t('resources.quizGood')}`
-                          : `📚 ${t('resources.quizKeepPracticing')}`}
+                          ? '👍 Bom trabalho! Continue praticando!'
+                          : '📚 Continue estudando e tente novamente!'}
                       </p>
                     </div>
                   )}
